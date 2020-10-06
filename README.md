@@ -151,6 +151,8 @@ Click on image to view fullscreen and zoom
 - I've personally found, learning by going through a good project codebase step by step while building your own project helps in ease of understanding and remembering
 
 
+## Repo Origin Author Information 
+
 ## Author
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 
@@ -162,7 +164,6 @@ Click on image to view fullscreen and zoom
 - Mateus Abdala - [GitHub](https://github.com/mateusabdala)
 - Hossein Nedaee - [GitHub](https://github.com/hosseinnedaee)
 - Mohammad Afzal - [GitHub](https://github.com/afzalex)
-- [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
 
 
 ## Donate
