@@ -1,3 +1,5 @@
+// list of all fonts used throughout app
+
 // Fonts
 
 export const primary = `'Roboto', sans-serif`

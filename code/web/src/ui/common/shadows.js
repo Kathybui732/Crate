@@ -1,3 +1,5 @@
+// list of all box and text shadows used throughout app
+
 // Shadows
 
 // Box
