@@ -15,6 +15,7 @@ import Loading from '../common/Loading'
 import EmptyMessage from '../common/EmptyMessage'
 import SubscriptionItem from '../subscription/Item'
 
+// subscriptions page
 // Component
 class Subscriptions extends PureComponent {
 

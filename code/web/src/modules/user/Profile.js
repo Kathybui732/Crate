@@ -1,3 +1,12 @@
+// track features
+// form to upload photo and set to state + send to server
+// input field for personal description
+// edit email address 
+// add shipping address 
+// ^^ could all be done on 'Edit Profile' page with 'save' button
+// see history of delivered items + history of items kept (buttons, leads to new pages?)
+
+
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -15,6 +24,12 @@ import { grey, grey2 } from '../../ui/common/colors'
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 
+
+// display profile page
+// 'My profile' heading (should cap 2nd word)
+// name + email
+// Subscriptions btn
+// Logout btn
 // Component
 const Profile = (props) => (
   <div>

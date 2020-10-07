@@ -1,3 +1,5 @@
+// styling for grid
+// not sure what React.Children is tho
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'

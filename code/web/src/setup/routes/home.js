@@ -1,3 +1,5 @@
+// home routes
+
 // App Imports
 import Home from '../../modules/pages/Home'
 import Men from '../../modules/pages/Men'

@@ -1,3 +1,5 @@
+// styling of Card
+
 // Imports
 import React from 'react'
 

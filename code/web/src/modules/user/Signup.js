@@ -22,6 +22,7 @@ import { messageShow, messageHide } from '../common/api/actions'
 import { register } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
+// signup page
 // Component
 class Signup extends Component {
 
@@ -39,6 +40,8 @@ class Signup extends Component {
     }
   }
 
+  // when user modifies input fields, it updates state based on which input field is added
+
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value
@@ -47,6 +50,10 @@ class Signup extends Component {
       user
     })
   }
+
+  // when user clicks on Create Account button
+  // state is sent to to dispatch / store and returns a message based on input
+  // it renders an error or success msg depending on input
 
   onSubmit = (event) => {
     event.preventDefault()

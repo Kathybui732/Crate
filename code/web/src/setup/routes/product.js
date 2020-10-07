@@ -1,3 +1,5 @@
+// product details page
+
 // App Imports
 import Detail from '../../modules/product/Detail'
 

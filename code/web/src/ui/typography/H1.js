@@ -1,3 +1,5 @@
+// styling for H1 header
+
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'

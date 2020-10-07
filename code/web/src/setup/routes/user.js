@@ -1,5 +1,6 @@
 // this file includes all the routes and components that a user would use / experience to login and beyond
-
+// add routes for all delivered and kept
+// add routes for editing profile
 // App Imports
 import Login from '../../modules/user/Login'
 import Signup from '../../modules/user/Signup'

@@ -1,3 +1,5 @@
+// login component for user
+
 // Imports
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
@@ -5,6 +7,7 @@ import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
+// styling
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
 import Button from '../../ui/button'
@@ -15,6 +18,7 @@ import Icon from '../../ui/icon'
 import { level1 } from '../../ui/common/shadows'
 import { white } from '../../ui/common/colors'
 
+// url path + route, methods to hide and show messages, login, and check authentication
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
@@ -38,6 +42,8 @@ class Login extends Component {
     // Function bindings
   }
 
+  // when input value is changed, the changed target value is assigned to the  user's email or pw, depending on 
+  // which input field is modified
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value
@@ -47,6 +53,10 @@ class Login extends Component {
     })
   }
 
+// after user clicks the submit / login button, prevent page from refreshing 
+// if there is an error or multiple errors regarding input (incorrect info), 
+// display error msg below input for 5 seconds
+// otherwise show loading msg
   onSubmit = (event) => {
     event.preventDefault()
 
@@ -72,6 +82,12 @@ class Login extends Component {
         }, 5000)
       })
   }
+
+  // below:
+// render login page
+// in tab, show Helmet data
+// show grid of stock images on left
+// show gird of login form on right
 
   render() {
     const { isLoading, error } = this.props.user

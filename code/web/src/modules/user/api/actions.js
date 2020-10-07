@@ -1,3 +1,6 @@
+// we should add action to update profile (upload image, update prof desc, shipping address, update email)
+// if user does not update certain thing, use initial state
+
 // Imports
 import axios from 'axios'
 // promise-based http client for browser and node.js
@@ -32,6 +35,11 @@ export function setUser(token, user) {
 }
 
 // Login a user using credentials
+// send login request to store
+// if any login input fields are incorrect, send error
+// otherwise, set token and user vars to the responses from server, and pass that into setUser to
+//  get type and payload for dispatch to store
+// then set the user to local storage and set cookie based on user
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
     dispatch({
@@ -73,6 +81,8 @@ export function login(userCredentials, isLoading = true) {
 }
 
 // Set user token and info in localStorage and cookie
+// this method is called in the parent login function above.
+
 export function loginSetUserLocalStorageAndCookie(token, user) {
   // Update token
   window.localStorage.setItem('token', token)
@@ -83,6 +93,7 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
 }
 
 // Register a user
+// post new user info to server, return response and set user info to store
 export function register(userDetails) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -93,7 +104,8 @@ export function register(userDetails) {
   }
 }
 
-// Log out user and remove token from localStorage
+// Log out user and remove token from localStorage, 
+// tell store to logout user
 export function logout() {
   return dispatch => {
     logoutUnsetUserLocalStorageAndCookie()
@@ -105,6 +117,7 @@ export function logout() {
 }
 
 // Unset user token and info in localStorage and cookie
+// upon logout, clear the cookies and local storage
 export function logoutUnsetUserLocalStorageAndCookie() {
   // Remove token
   window.localStorage.removeItem('token')
@@ -115,8 +128,8 @@ export function logoutUnsetUserLocalStorageAndCookie() {
 }
 
 // Get user gender
+// post the user's name and id to location user's gender in server, return gender and set in store
 export function getGenders() {
-  // get 
   return dispatch => {
     return axios.post(routeApi, query({
       operation: 'userGenders',
