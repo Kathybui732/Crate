@@ -1,3 +1,5 @@
+// imports the destructured object of Server from http package, imports Express server from express package
+
 // Imports
 import { Server } from 'http'
 import Express from 'express'

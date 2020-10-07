@@ -1,3 +1,5 @@
+// this file includes all the routes and components that a user would use / experience to login and beyond
+
 // App Imports
 import Login from '../../modules/user/Login'
 import Signup from '../../modules/user/Signup'
@@ -6,25 +8,27 @@ import Subscriptions from '../../modules/user/Subscriptions'
 
 // User routes
 export default {
-  login: {
-    path: '/user/login',
-    component: Login
-  },
+ login: {
+  path: "/user/login",
+  component: Login,
+ },
 
-  signup: {
-    path: '/user/signup',
-    component: Signup
-  },
+ signup: {
+  path: "/user/signup",
+  component: Signup,
+ },
 
-  profile: {
-    path: '/user/profile',
-    component: Profile,
-    auth: true
-  },
+ profile: {
+  path: "/user/profile",
+  component: Profile,
+  auth: true,
+  // not accessible if auth is false?
+ },
 
-  subscriptions: {
-    path: '/user/subscriptions',
-    component: Subscriptions,
-    auth: true
-  }
-}
+ subscriptions: {
+  path: "/user/subscriptions",
+  component: Subscriptions,
+  auth: true,
+  // not accessible if auth is false?
+ },
+};

@@ -1,6 +1,11 @@
 // Imports
 import dotenv from 'dotenv'
 
+// create an enviro w dotenv 
+// assign vars app url and app api url to the urls created in node js
+// assign var node enviro to that created in node js
+// assign var port to port created in node js
+
 // Load .env
 dotenv.config()
 

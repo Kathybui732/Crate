@@ -1,12 +1,17 @@
 // Imports
 import axios from 'axios'
+// promise-based http client for browser and node.js
 import { query, mutation } from 'gql-query-builder'
+// A simple helper function to generate GraphQL queries using plain JavaScript Objects (JSON).
 import cookie from 'js-cookie'
+// handles cookies (user info)
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
+// get routeAPI from routes, config, env.js 
 
 // Actions Types
+// action
 export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
@@ -23,6 +28,7 @@ export function setUser(token, user) {
   }
 
   return { type: SET_USER, user }
+  // returns type and payload for action object to tell global store
 }
 
 // Login a user using credentials
@@ -110,6 +116,7 @@ export function logoutUnsetUserLocalStorageAndCookie() {
 
 // Get user gender
 export function getGenders() {
+  // get 
   return dispatch => {
     return axios.post(routeApi, query({
       operation: 'userGenders',

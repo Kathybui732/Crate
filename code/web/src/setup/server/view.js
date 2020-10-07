@@ -1,3 +1,5 @@
+// index.html using jsx that takes in app url, node envi, helmet info, appHTML, styles, and an init state
+
 const index = (APP_URL, NODE_ENV, helmet = null, appHtml = '', styles = '', initialState = {}) => (
 `<!doctype html>
 <html lang="en">

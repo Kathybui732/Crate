@@ -1,3 +1,5 @@
+// exports routes, routeApi and idk what routeImage is
+
 // App Imports
 import { APP_URL_API } from '../config/env'
 import admin from './admin'

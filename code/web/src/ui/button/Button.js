@@ -1,4 +1,4 @@
-// 
+// Imports styles from common folder to style buttons used across site
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
