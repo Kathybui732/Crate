@@ -1,6 +1,8 @@
 // Imports
 import React, { PureComponent } from 'react'
 
+// This has an extra built-into-react import
+
 // App Imports
 
 // Component
@@ -22,3 +24,5 @@ class DummyComponent extends PureComponent {
 }
 
 export default DummyComponent
+
+// This is basically anything that that is viewable

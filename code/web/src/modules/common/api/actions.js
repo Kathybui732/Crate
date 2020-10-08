@@ -14,6 +14,8 @@ export function messageHide() {
   return { type: MESSAGE_HIDE }
 }
 
+// Forms send a post request to the API in line 21
+
 export function upload(data) {
   return dispatch => {
     return axios.post(routeApi + '/upload', data, {
@@ -23,4 +25,3 @@ export function upload(data) {
     })
   }
 }
-

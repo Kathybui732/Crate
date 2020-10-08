@@ -17,6 +17,7 @@ class DummyComponentRedux extends PureComponent {
 
   componentDidMount() {
     // this.props.someAction()
+    //"hook" into the component lifecycle
   }
 
   render() {
@@ -40,3 +41,5 @@ function dummyComponentReduxState(state) {
 }
 
 export default connect(dummyComponentReduxState, { /* someAction */ })(DummyComponentRedux)
+
+// State is managed in a global "store"

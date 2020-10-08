@@ -11,3 +11,5 @@ const DummyComponentPure = () => (
 )
 
 export default DummyComponentPure
+
+// A pure component is a function that returns JSX
