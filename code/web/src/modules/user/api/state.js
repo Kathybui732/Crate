@@ -1,8 +1,11 @@
-// reducers file 
+//  reducers
 
 // App Imports
 import { isEmpty } from '../../../setup/helpers'
 import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
+// import the actions
+// dpeending on action type, use appropriate reducer case
+
 
 // Initial State
 export const userInitialState = {
@@ -11,6 +14,8 @@ export const userInitialState = {
   isAuthenticated: false,
   details: null
 }
+
+// reducer switch statement
 
 // State
 export default (state = userInitialState, action) => {
@@ -44,6 +49,7 @@ export default (state = userInitialState, action) => {
         isAuthenticated: false,
         details: null
       }
+
 
     default:
       return state

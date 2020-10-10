@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
+
 // App Imports
 import common from '../modules/common/api/state'
 import user from '../modules/user/api/state'
@@ -29,6 +30,8 @@ export const rootReducer = (state, action) => {
   return appReducer(state, action)
 }
 
+// server side rendering means the server renders the site on init load, then afterwards the site
+//  rendering is a reaction to the users actions
 // Load initial state from server side
 let initialState
 if (typeof window !== 'undefined') {

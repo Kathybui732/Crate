@@ -127,6 +127,8 @@ export function logoutUnsetUserLocalStorageAndCookie() {
   cookie.remove('auth')
 }
 
+// will need to action to submit user info form
+
 // Get user gender
 // post the user's name and id to location user's gender in server, return gender and set in store
 export function getGenders() {
