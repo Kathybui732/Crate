@@ -1,4 +1,4 @@
-// App Imports
+// App Imports - Looking more at resolver files, they seem to be like a facade or controller - they don't actually do the "grunt work" of CRUDing a product, but check for whether a request coming in is valid and can be passed off to the function that is able to do that. It looks like the heavy lifting is actually done by the Mutation file.
 import params from '../../config/params'
 import models from '../../setup/models'
 
@@ -24,7 +24,7 @@ export async function getById(parentValue, { productId }) {
   const product = await models.Product.findOne({ where: { id: productId } })
 
   if (!product) {
-    // Product does not exists
+    // Product does not exists - I wonder if there is a way to DRY up these error messages, maybe by having a file that just houses all the various error messages and simply calling a method from there. Or, if there is error handling like there is in Rails where you can write something like "error.full_messages.to_sentence"
     throw new Error('The product you are looking for does not exists or has been discontinued.')
   } else {
     return product
@@ -42,7 +42,7 @@ export async function getRelated(parentValue, { productId }) {
   })
 }
 
-// Create product
+// Create product - Following up on my annotation in Mutations, it does not look like the below has sad path functionality if a Product is attempted to be created without the presence of one or many fields. It only seems to check if the user who is trying to create the product is an admin.
 export async function create(parentValue, { name, slug, description, type, gender, image }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     return await models.Product.create({

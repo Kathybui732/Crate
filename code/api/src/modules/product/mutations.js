@@ -5,7 +5,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 import { ProductType } from './types'
 import { create, update, remove } from './resolvers'
 
-// Product create
+// Product create - these are the parameters for how a product is able to be created. It has all those attributes below which are needed in order to create a Product. Just looking at the code, I'm not sure if it would throw an error if a product is attempted to be created without the presence of every attribute field - for example, if it doesn't have a slug, can it still be created?
 export const productCreate = {
   type: ProductType,
   args: {
@@ -42,7 +42,7 @@ export const productCreate = {
   resolve: create
 }
 
-// Product update
+// Product update - Again, not sure just by looking at the code if a product can be updated that is still missing certain fields.
 export const productUpdate = {
   type: ProductType,
   args: {
@@ -84,7 +84,7 @@ export const productUpdate = {
   resolve: update
 }
 
-// Product remove
+// Product remove - Like the methods above, this one is just the operation of removing a product.
 export const productRemove = {
   type: ProductType,
   args: {
