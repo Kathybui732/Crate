@@ -5,7 +5,7 @@ import { GraphQLInt } from 'graphql'
 import SubscriptionType from './types'
 import { create, remove } from './resolvers'
 
-// Subscription create
+// Subscription create - Looking just at the code from below, it looks like a Subscription can be created with only a crate ID, even though Subscription is a joins table between crate and user.
 export const subscriptionCreate = {
   type: SubscriptionType,
   args: {

@@ -12,7 +12,7 @@ export async function get(parentValue, { id }) {
   })
 }
 
-// Get subscription by user
+// Get subscription by user - It looks like 'auth' is passed in when this method is called. I wonder where exactly that is. Maybe somewhere on the front end? It looks like the actual act of authentication is handled here - if the user is not logged in then they can't use this function.
 export async function getByUser(parentValue, {}, { auth }) {
   if(auth.user && auth.user.id > 0) {
     return await models.Subscription.findAll({
@@ -29,7 +29,7 @@ export async function getByUser(parentValue, {}, { auth }) {
   }
 }
 
-// Get all subscriptions
+// Get all subscriptions - It does not look like any authentication happens in this function.
 export async function getAll() {
   return await models.Subscription.findAll({
     include: [

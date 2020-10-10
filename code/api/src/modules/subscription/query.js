@@ -17,7 +17,7 @@ export const subscriptionsByUser = {
   resolve: getByUser
 }
 
-// Subscription By id
+// Subscription By id - This eventually points to the 'get' function in resolvers.js in this directory.
 export const subscription = {
   type: SubscriptionType,
   args: {
