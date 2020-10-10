@@ -33,3 +33,5 @@ module.exports = {
     return queryInterface.dropTable('users');
   }
 }
+
+// This file defines the migration for creating a user. It's interesting that the files are named 1-user.js, 2-product.js, etc. And a DateTime is not auto-generated upon creating the migration. Maybe it just orders them this way to show which migrations came first?

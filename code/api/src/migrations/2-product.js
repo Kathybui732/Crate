@@ -39,3 +39,5 @@ module.exports = {
     return queryInterface.dropTable('products');
   }
 }
+
+// This is the migration for creating a Product table. I hadn't seen what a Slug was before, and after Googling it looks like it is "the last part of the url containing a unique string which identifies the resource". I imagine this would work in this app by making a URI be something like "/products/womens-belt", instead of "/products/1", for example. A slug also has to be unique since it is a path on a website.

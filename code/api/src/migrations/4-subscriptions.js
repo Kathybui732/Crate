@@ -37,3 +37,5 @@ module.exports = {
     return queryInterface.dropTable('subscriptions');
   }
 }
+
+// In a previous comment, I mentioned that it didn't look like a User ID is needed to be able to instantiate a Subscription. However, looking at the table it does show that a User ID is required, because allowNull is false for that.
