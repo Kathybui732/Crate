@@ -1,7 +1,7 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
-// User type
+// User type - So there is the User Type, the User Login Type, and the User Gender Type. I wonder if all of these are necessary?
 const UserType = new GraphQLObjectType({
   name: 'user',
   description: 'User type',

@@ -5,7 +5,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 import { UserType } from './types'
 import { create, remove } from './resolvers'
 
-// Create
+// Create - I'm not sure why the type needs to be specified here. I wonder if that can be assumed based on the file strucutre?
 export const userSignup = {
   type: UserType,
   args: {

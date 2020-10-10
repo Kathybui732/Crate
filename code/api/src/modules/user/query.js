@@ -20,7 +20,7 @@ export const user = {
   resolve: getById
 }
 
-// Auth
+// Auth - In the queries of Subscription, what's passed in to the resolver is the auth. For example auth.user.id. Maybe it has something to do with this const?
 export const userLogin = {
   type: UserLoginType,
   args: {
