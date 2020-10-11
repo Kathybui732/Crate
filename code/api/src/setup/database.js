@@ -28,3 +28,5 @@ connection
   })
 
 export default connection
+
+// This file looks like it configures the database. As with authentication, I'm not 100% sure how it does that. Because of the console.info commands, it looks like this directly impacts the user experience somehow.

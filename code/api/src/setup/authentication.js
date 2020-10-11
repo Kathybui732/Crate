@@ -19,3 +19,4 @@ export default function (request, response, next) {
 
   next()
 }
+// The syntax of the file I'm not 100% clear on, but it looks like it attempts to authenticate a user.

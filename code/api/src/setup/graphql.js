@@ -25,3 +25,5 @@ export default function (server) {
     }
   })))
 }
+
+// This file sets up how GraphQL can interact with the database. All of these files in setup look like they're run when the app is first needing to be set up/hosted on a user's local machine.

@@ -12,3 +12,5 @@ const schema = new GraphQLSchema({
 })
 
 export default schema
+
+// Maybe this file is the most "top level" file in this schema directory, and is called upon by other parts of the app?

@@ -21,3 +21,5 @@ const query = new GraphQLObjectType({
 })
 
 export default query
+
+// Similar to the mutations, this imports how the various modules should be queried. I'm also not sure why it's defined here, because those queries are defined elsewhere in the app.
