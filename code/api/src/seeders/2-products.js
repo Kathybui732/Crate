@@ -92,3 +92,5 @@ module.exports = {
     return queryInterface.bulkDelete('products', null, {});
   }
 }
+
+// This file creates multiple products to be in the database. It looks relatively self explanatory, but I'm still not 100% sure why the arguments that are passed in down: and up: are there.

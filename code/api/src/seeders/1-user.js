@@ -30,3 +30,7 @@ module.exports = {
     return queryInterface.bulkDelete('users', null, {});
   }
 }
+
+// I imagine in an app that is real, this sort of file where users are seeded and their passwords are open to see would be at the minimum git ignored.
+// I am unsure about much of the syntax of this file, but it looks to just be where the users are seeded in the database.
+// I looked up what saltRounds is, and it's a function of bcrypt that essentially adds layers of complexity to something with each round of saltRounds. A higher saltRounds value ensures more complex and secure hashes. However, very high salt rounds results in a bad user experience as it takes that much more time to secure the password. In our case, the number of salt rounds is defined in the server.json file, and it's 10.
