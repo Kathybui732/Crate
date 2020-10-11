@@ -43,3 +43,5 @@ export const productTypes = {
   type: new GraphQLList(ProductTypesType),
   resolve: getTypes
 }
+
+// If a product can have many crates, and a crate can have many products, we'd need the product to be able to tell which crates it has. That would be another query in this file.

@@ -1,7 +1,7 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
-// Product type
+// Product type - I think in the following block is where we would need to define how a crate can have many products, and product can have many crates. The reason for this is so the user can see which products they have returned and which they have kept.
 const ProductType = new GraphQLObjectType({
   name: 'product',
   description: 'Product Type',

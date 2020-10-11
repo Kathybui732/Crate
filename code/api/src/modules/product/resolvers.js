@@ -97,3 +97,5 @@ export async function remove(parentValue, { id }, { auth }) {
 export async function getTypes() {
   return Object.values(params.product.types)
 }
+
+// Perhaps in this file we'd need to add a way for a product to look at which crate its in?
