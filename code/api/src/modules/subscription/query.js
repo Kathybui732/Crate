@@ -25,3 +25,5 @@ export const subscription = {
   },
   resolve: get
 }
+
+// We'd need another query here for getting the current delivery date. 

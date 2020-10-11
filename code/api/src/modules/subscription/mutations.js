@@ -28,3 +28,5 @@ export const subscriptionRemove = {
   },
   resolve: remove
 }
+
+// After the above, since we are needing a way to have a user be able to change their delivery date, we would add a mutation here to do something like subscriptionUpdateDeliveryDate.

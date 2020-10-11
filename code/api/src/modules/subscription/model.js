@@ -1,6 +1,6 @@
 'use strict'
 
-// Subscription - A subscription is a joins table between a user and a crate.
+// Subscription - A subscription is a joins table between a user and a crate. 
 module.exports = function(sequelize, DataTypes) {
   let Subscription = sequelize.define('subscriptions', {
     userId: {
