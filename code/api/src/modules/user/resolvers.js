@@ -82,3 +82,5 @@ export async function remove(parentValue, { id }) {
 export async function getGenders() {
   return Object.values(params.user.gender)
 }
+
+// Here is where we'd control for the new queries/mutations, checking first if a user is authorized to make those changes. The queries/mutations are CRUD functionality for a user's picture, shipping address, personal description and email.

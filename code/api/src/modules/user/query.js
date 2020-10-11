@@ -47,3 +47,5 @@ export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders
 }
+
+// In this file we'd create queries for checking a user's picture, shipping address, personal description and email.

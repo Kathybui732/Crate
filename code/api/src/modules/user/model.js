@@ -23,3 +23,5 @@ module.exports = function(sequelize, DataTypes) {
 
   return User
 }
+
+// In the above is where we would need to add some columns - a picture column, shipping address column and personal description column.

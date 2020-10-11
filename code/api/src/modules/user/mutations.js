@@ -38,3 +38,5 @@ export const userRemove = {
   },
   resolve: remove
 }
+
+// In this file we'd also want to create some mutations for userUpdateShippingAddress, userUpdatePicture, userUpdatePersonalDescription and userUpdateEmail, and there would also need to be create methods and remove methods for those as well I think. 

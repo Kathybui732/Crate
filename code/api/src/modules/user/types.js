@@ -40,3 +40,5 @@ const UserGenderType = new GraphQLObjectType({
 })
 
 export { UserType, UserLoginType, UserGenderType }
+
+// I'm not exactly sure how we would use this file when making the new user CRUD functionality for shipping adress, picture, personal description or email. But maybe we would need to do that?
