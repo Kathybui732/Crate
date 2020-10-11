@@ -1,3 +1,5 @@
+// mutations that can be made from all the modules are compiled here to make up the schema - all the CUD functionality
+
 // Imports
 import { GraphQLObjectType } from 'graphql'
 

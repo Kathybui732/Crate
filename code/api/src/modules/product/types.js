@@ -1,3 +1,5 @@
+// SEE CRATE FOR MORE GENERAL ANNOTATIONS ANY DIFFERENT LINES ANNOTATED HERE
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
@@ -19,7 +21,7 @@ const ProductType = new GraphQLObjectType({
   })
 })
 
-// User Gender type
+// User Gender type - to assign whether the product is a male or female article
 const ProductTypesType = new GraphQLObjectType({
   name: 'productTypesType',
   description: 'User Types Type',
@@ -31,3 +33,4 @@ const ProductTypesType = new GraphQLObjectType({
 })
 
 export { ProductType, ProductTypesType }
+// i.e. pants for women

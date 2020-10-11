@@ -1,3 +1,5 @@
+// SEE ANNOTATIONS IN USER - ONLY GLARING DIFFERENCES ARE ANNOTATED HERE
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('products', {

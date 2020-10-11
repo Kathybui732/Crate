@@ -17,7 +17,7 @@ const UserType = new GraphQLObjectType({
   })
 })
 
-// User Login type
+// User Login type - authentication around the site is used with the user and their token
 const UserLoginType = new GraphQLObjectType({
   name: 'userAuth',
   description: 'User Authentication Type',

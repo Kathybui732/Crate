@@ -12,7 +12,7 @@ export const crateCreate = {
   // export statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the import statement
   type: CrateType,
   // Type contains description of the data (i.e. properties, operations, etc)
-  //  Class is a specific type - it is a template to create instances of objects.
+  //   Class is a specific type - it is a template to create instances of objects.
   args: {
     name: {
       name: 'name',

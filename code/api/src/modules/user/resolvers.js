@@ -1,6 +1,12 @@
+// Resolver is a collection of functions that generate response for a GraphQL query. In simple terms, a resolver acts as a GraphQL query handler. Every resolver function in a GraphQL schema accepts four positional arguments as given below −
+//
+// fieldName:(root, args, context, info) => { result }
+
 // Imports
 import bcrypt from 'bcrypt'
+// bycrypt to encrypt password
 import jwt from 'jsonwebtoken'
+// to assign a user a token after logging in to use to authenticate and allow them to access different info
 
 // App Imports
 import serverConfig from '../../config/server'
@@ -11,18 +17,21 @@ import models from '../../setup/models'
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
   const user = await models.User.findOne({ where: { email } })
+  // looks up email to see if it exists
 
   if (!user) {
     // User does not exists
     const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds)
+    // if it doesn't exist, then create the encryption for the password
 
     return await models.User.create({
       name,
       email,
       password: passwordHashed
     })
+    // once we've checked for the email uniqueness and encrypted their password, we can create that user
   } else {
-    // User exists
+    // User exists - if email already exists in the system, return this:
     throw new Error(`The email ${ email } is already registered. Please try to login.`)
   }
 }
@@ -31,18 +40,20 @@ export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 
   if (!user) {
-    // User does not exists
+    // User does not exists - if email isnt registered in server
     throw new Error(`We do not have any user registered with ${ email } email address. Please signup.`)
   } else {
     const userDetails = user.get()
 
-    // User exists
+    // User exists - else we look up the user with the email
     const passwordMatch = await bcrypt.compare(password, userDetails.password)
+    // compare the password to see if it matches the one encrypted one in system
 
     if (!passwordMatch) {
-      // Incorrect password
+      // Incorrect password - if passwords do not match throw this error
       throw new Error(`Sorry, the password you entered is incorrect. Please try again.`)
     } else {
+      // else we log them in and give them their token to be used by the sessions
       const userDetailsToken = {
         id: userDetails.id,
         name: userDetails.name,

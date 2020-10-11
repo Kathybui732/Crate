@@ -1,3 +1,5 @@
+// SEE USER.JS FOR ANNOTATIONS
+
 'use strict';
 
 const params = require('../config/params');

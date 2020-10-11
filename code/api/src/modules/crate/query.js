@@ -14,15 +14,19 @@ export const crates = {
   // the type that is returned from crates is a graphql list of crates
   args: {
     orderBy: { type: GraphQLString }
+    // This will order by which field you want and then asc or desc like { createdAt: asc }
   },
   resolve: getAll
+  // get all crates resolver method from resolver.js
 }
 
-// Crate By ID
+// Crate By ID - i.e. a GET request for crate show
 export const crateById = {
   type: CrateType,
   args: {
     crateId: { type: GraphQLInt }
   },
+  // takes inthe arguement of the crate's ID
   resolve: getById
+  // gets a single crate that matches ID requested
 }

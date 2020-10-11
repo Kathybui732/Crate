@@ -1,3 +1,5 @@
+// SEE ANNOTATIONS IN USER - ONLY GLARING DIFFERENCES ARE ANNOTATED HERE
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('subscriptions', {
@@ -10,6 +12,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         references: {
+          // this is similar to the rails references - this allows you to make the relationship between subscriptiosn and user becuase a crate will belong to a user, so it needs the user id foreign key
           model: 'users',
           key: 'id'
         },
@@ -18,6 +21,7 @@ module.exports = {
       crateId: {
         type: Sequelize.INTEGER,
         references: {
+          // this allows you to make the relationship between subscriptiosn and crate becuase a crate will belong to a crate, so it needs the user id foreign key
           model: 'crates',
           key: 'id'
         },

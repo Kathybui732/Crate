@@ -1,3 +1,5 @@
+// SEE CRATE FOR MORE GENERAL ANNOTATIONS ANY DIFFERENT LINES ANNOTATED HERE
+
 // Imports
 import { GraphQLInt, GraphQLList } from 'graphql'
 
@@ -11,7 +13,7 @@ export const subscriptions = {
   resolve: getAll
 }
 
-// Subscriptions by user
+// Subscriptions by user - like User.subscriptions, gets all subscriptions a specfic user has made
 export const subscriptionsByUser = {
   type: new GraphQLList(SubscriptionType),
   resolve: getByUser

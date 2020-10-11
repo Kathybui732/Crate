@@ -1,10 +1,12 @@
 'use strict'
 // The purpose of "use strict" is to indicate that the code should be executed in "strict mode" from ECMAScript version 5.
 // Strict mode changes previously accepted "bad syntax" into real errors. 
-//  As an example, in normal JavaScript, mistyping a variable name creates a new global variable.
+// As an example, in normal JavaScript, mistyping a variable name creates a new global variable.
 // In strict mode, this will throw an error, making it impossible to accidentally create a global variable.  
 // In normal JavaScript, a developer will not receive any error feedback assigning values to non-writable properties.  
 // In strict mode, any assignment to a non-writable property, a getter-only property, a non-existing property, a non-existing variable, or a non-existing object, will throw an error.
+
+// MODEL file is where the ORM occurs && this is like the relationships part of a rails app where we define the relations this object has
 
 module.exports = function(sequelize, DataTypes) {
   // module.exports allows you to import this file(require) anywhere else within the repo

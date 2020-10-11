@@ -1,3 +1,5 @@
+// SEE CRATE FOR MORE GENERAL ANNOTATIONS ANY DIFFERENT LINES ANNOTATED HERE
+
 // App Imports
 import params from '../../config/params'
 import models from '../../setup/models'
@@ -10,9 +12,10 @@ export async function getAll() {
 // Get product by slug
 export async function getBySlug(parentValue, { slug }) {
   const product = await models.Product.findOne({ where: { slug } })
+  // find one product with this slug
 
   if (!product) {
-    // Product does not exists
+    // Product does not exists return this error
     throw new Error('The product you are looking for does not exists or has been discontinued.')
   } else {
     return product
@@ -31,7 +34,7 @@ export async function getById(parentValue, { productId }) {
   }
 }
 
-// Get related products
+// Get related products - gets all the products related to current one, then randomly choose 3 to return from that list, so it's not always the same
 export async function getRelated(parentValue, { productId }) {
   return await models.Product.findAll({
     where: {
@@ -42,7 +45,7 @@ export async function getRelated(parentValue, { productId }) {
   })
 }
 
-// Create product
+// Create product - method to create that depends on authorization
 export async function create(parentValue, { name, slug, description, type, gender, image }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     return await models.Product.create({
@@ -58,7 +61,7 @@ export async function create(parentValue, { name, slug, description, type, gende
   }
 }
 
-// Update product
+// Update product - method to update that depends on authorization
 export async function update(parentValue, { id, name, slug, description, type, gender, image }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     return await models.Product.update(
@@ -77,7 +80,7 @@ export async function update(parentValue, { id, name, slug, description, type, g
   }
 }
 
-// Delete product
+// Delete product - method to delete object by id if an object with that id exists with authorization else throw an error
 export async function remove(parentValue, { id }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     const product = await models.Product.findOne({where: {id}})
@@ -93,7 +96,7 @@ export async function remove(parentValue, { id }, { auth }) {
   }
 }
 
-// Product types
+// Product types - gets a list of all the product types
 export async function getTypes() {
   return Object.values(params.product.types)
 }
