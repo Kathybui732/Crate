@@ -22,7 +22,7 @@ if (token && token !== 'undefined' && token !== '') {
   }
 }
 
-// Client App
+// Client App: Provider here allows our <App> component (& it's child components) to have access to store.
 const Client = () => (
   <Provider store={store} key="provider">
     <Router>
@@ -33,7 +33,7 @@ const Client = () => (
   </Provider>
 )
 
-// Mount client app
+// Mount client app: Note- hydrate is used here because of SSR. Rather than "render" in our test suite, we might want to look into "hydrate"...
 window.onload = () => {
   hydrate(
     <Client/>,
