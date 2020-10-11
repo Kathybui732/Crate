@@ -57,3 +57,5 @@ export async function remove(parentValue, { id }, { auth }) {
     throw new Error('Operation denied.')
   }
 }
+
+// This file would need to have a control for when a crate needs to query about which products it has.

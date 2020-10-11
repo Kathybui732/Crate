@@ -23,3 +23,5 @@ export const crateById = {
   },
   resolve: getById
 }
+
+// Here is where we'd need to define the query for a crate being able to tell which products it has.

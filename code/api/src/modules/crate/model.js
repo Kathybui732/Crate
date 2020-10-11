@@ -23,3 +23,5 @@ module.exports = function(sequelize, DataTypes) {
 // The below is what is returned after a Crate has been created using the attributes above.
   return Crate
 }
+
+// If we add the functionality of crates hasMany products, and products also hasMany crates, the crates would need to be able to tell which products it has. Here is where we'd define that a productID would need to be a non-required column on the crate table.

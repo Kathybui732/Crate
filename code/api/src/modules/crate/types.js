@@ -17,3 +17,5 @@ const CrateType = new GraphQLObjectType({
 })
 
 export default CrateType
+
+// We may need to make a Product Type so a crate can query about its products? If we did, that functionality would be here.
