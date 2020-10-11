@@ -4,7 +4,7 @@
 import { isEmpty } from '../../../setup/helpers'
 import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
 // import the actions
-// dpeending on action type, use appropriate reducer case
+// depending on action type, use appropriate reducer case
 
 
 // Initial State

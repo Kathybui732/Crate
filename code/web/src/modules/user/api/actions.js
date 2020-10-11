@@ -1,5 +1,3 @@
-// we should add action to update profile (upload image, update prof desc, shipping address, update email)
-// if user does not update certain thing, use initial state
 
 // Imports
 import axios from 'axios'
@@ -19,6 +17,10 @@ export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
+// export const UPDATEPROFILE = 'AUTH/UPDATE_PROFILE'
+// we should add action to update profile (save updated profile datapoint)
+// if user does not update certain thing, use initial state
+
 
 // Actions
 
@@ -99,7 +101,7 @@ export function register(userDetails) {
     return axios.post(routeApi, mutation({
       operation: 'userSignup',
       variables: userDetails,
-      fields: ['id', 'name', 'email']
+      fields: ['id', 'name', 'email', 'shippingAddress', 'description', 'productsDeliv', 'productsKept', 'image' ]
     }))
   }
 }
@@ -139,3 +141,8 @@ export function getGenders() {
     }))
   }
 }
+
+
+// export function saveUpdatedProfInfo(datapoint) {
+      // if 
+// }

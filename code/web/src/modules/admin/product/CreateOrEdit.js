@@ -42,7 +42,7 @@ class CreateOrEdit extends Component {
         description: '',
         type: 0,
         gender: 0,
-        image: ''
+        image: '',
       },
       productTypes: [],
       userGenders: [],

@@ -36,6 +36,12 @@ class Signup extends Component {
         name: '',
         email: '',
         password: '',
+        // image: '',
+        // shippingAddress: 'Add Your Full Address',
+        // deliveryDate: '',
+        // description: 'Tell us about your style',
+        // productsDelivered: {},
+        // productsKept: {}
       }
     }
   }
