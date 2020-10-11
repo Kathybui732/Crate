@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import { hydrate } from 'react-dom'
+import ReactDOM, { hydrate } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
@@ -34,9 +34,19 @@ const Client = () => (
 )
 
 // Mount client app
+// Hydrate has to do with the warning message in console:
+// 'Expected server HTML to contain a matching <div> in <main>.'
+// since it's pulling data server-side before sending to the client
+// This line below fixes it:
+
+// const renderMethod = module.hot ? ReactDOM.hydrate : ReactDOM.render
+
 window.onload = () => {
+  //change hydrate to renderMethod to fix warning 
   hydrate(
     <Client/>,
     document.getElementById('app')
   )
 }
+
+export default Client

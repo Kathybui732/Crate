@@ -23,6 +23,7 @@ import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
+// controlled login form, holds it's own state
 class Login extends Component {
 
   constructor(props) {
@@ -38,6 +39,7 @@ class Login extends Component {
     // Function bindings
   }
 
+  //updates state with each change (event) in the login form 
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value
@@ -50,8 +52,10 @@ class Login extends Component {
   onSubmit = (event) => {
     event.preventDefault()
 
+    // Displays temporary message when logging in
     this.props.messageShow('Logging in, please wait...')
 
+    //login is imported from the actions file 
     this.props.login(this.state.user)
       .then(response => {
         if (this.props.user.error && this.props.user.error.length > 0) {
@@ -175,4 +179,7 @@ function loginState(state) {
   }
 }
 
+// Naming doesn't matter with the mapsState and mapDispatch (the arguments of connect)
+// it just needs to be a function that returns objects 
+// connect wraps the component and gives it access to the redux store 
 export default connect(loginState, { login, messageShow, messageHide })(withRouter(Login))

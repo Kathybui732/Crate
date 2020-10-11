@@ -1,5 +1,7 @@
 // Imports
+// component displays on error 404 for the user
 import React from 'react'
+//Helmet: manage and dynamically set what's in the document's head section
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 

@@ -1,4 +1,5 @@
 // Imports
+// could be used for uploading the photo
 import React from 'react'
 import PropTypes from 'prop-types'
 

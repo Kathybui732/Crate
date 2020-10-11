@@ -1,6 +1,11 @@
 // Imports
+// will need functions for uploading the photo, bio, and edit email, shipping 
+
+//Axios is a library that assists in HTTP requests 
 import axios from 'axios'
+//gql query builder function to generate GraphQL queries using plain JavaScript Objects (JSON).
 import { query, mutation } from 'gql-query-builder'
+// api for handling cookies
 import cookie from 'js-cookie'
 
 // App Imports
@@ -25,7 +30,7 @@ export function setUser(token, user) {
   return { type: SET_USER, user }
 }
 
-// Login a user using credentials
+// Login a user using credentials - user obj/hash that contains email and password
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
     dispatch({
@@ -33,6 +38,9 @@ export function login(userCredentials, isLoading = true) {
       isLoading
     })
 
+    // operation: the name of the operation to be executed on server - string (required)
+    // fields: A selection of fields - array (not required)
+    // variables: variables sent to the operation - object (not required)
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,

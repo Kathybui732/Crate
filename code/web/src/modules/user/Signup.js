@@ -23,6 +23,7 @@ import { register } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
+// controlled form that holds it's own state
 class Signup extends Component {
 
   constructor(props) {
@@ -39,6 +40,7 @@ class Signup extends Component {
     }
   }
 
+  // updates the state on change of an input
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value
@@ -68,6 +70,7 @@ class Signup extends Component {
         } else {
           this.props.messageShow('Signed up successfully.')
 
+          //What is 'history' and where is it coming from?
           this.props.history.push(userRoutes.login.path)
         }
       })

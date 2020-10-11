@@ -1,11 +1,15 @@
 // Imports
+//Renders the Profile page
+// Use ui components for rendering the new components on profile page
+// the input and textarea will be imported 
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
-// UI Imports
+// UI Imports: Imports styled elements
 import { Grid, GridCell } from '../../ui/grid'
 import { H3, H4 } from '../../ui/typography'
 import Button from '../../ui/button'
@@ -17,6 +21,10 @@ import { logout } from './api/actions'
 
 // Component
 const Profile = (props) => (
+  // Add a controlled form (similar to Login)
+  // The state will hold a user obj/hash that will have:
+  // email, picture, address, and bio
+
   <div>
     {/* SEO */}
     <Helmet>

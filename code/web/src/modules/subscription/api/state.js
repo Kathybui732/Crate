@@ -1,4 +1,5 @@
 // Imports
+// Holds the state of all the subscriptions
 
 // App Imports
 import {
@@ -15,7 +16,7 @@ import {
 
 // Subscriptions list
 
-// Initial State
+// Initial State - default state of all the subscriptions 
 const subscriptionsInitialState = {
   isLoading: false,
   error: null,
@@ -54,7 +55,7 @@ export const subscriptions = (state = subscriptionsInitialState, action) => {
 
 // Subscriptions list by user
 
-// Initial State
+// Initial State - default state of subs
 const subscriptionsByUserInitialState = {
   isLoading: false,
   error: null,
@@ -93,7 +94,7 @@ export const subscriptionsByUser = (state = subscriptionsByUserInitialState, act
 
 // Single subscription
 
-// Initial State
+// Initial State - default state for just a single sub
 const subscriptionInitialState = {
   isLoading: false,
   error: null,

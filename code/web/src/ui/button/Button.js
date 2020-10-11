@@ -2,6 +2,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// button component holds state of disabled or active, passed down through props
+
 // UI Imports
 import { white, grey2, black, primary, secondary } from '../common/colors'
 import { primary as primaryGradient, secondary as secondaryGradient } from '../common/gradients'

@@ -37,6 +37,7 @@ class Item extends PureComponent {
 
       this.props.messageShow('Subscribing, please wait...')
 
+      // removes the crate from the subscriptions 
       this.props.remove({id})
         .then(response => {
           if (response.data.errors && response.data.errors.length > 0) {
@@ -44,6 +45,7 @@ class Item extends PureComponent {
           } else {
             this.props.messageShow('Unsubscribed successfully.')
 
+            //this makes another request to get crates and re-renders page with subscriptions after a sub has been removed
             this.props.getListByUser()
           }
         })

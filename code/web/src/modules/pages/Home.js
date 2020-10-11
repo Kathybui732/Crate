@@ -16,6 +16,7 @@ import { textLevel1 } from '../../ui/common/shadows'
 import { APP_URL } from '../../setup/config/env'
 import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
+// Onboarding allows for sliding of elements (shows up on the first load of app when you go though the "get started")
 import Onboarding from './Onboarding'
 
 // Component
