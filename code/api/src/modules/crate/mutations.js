@@ -45,6 +45,7 @@ export const crateUpdate = {
 }
 
 // Crate remove
+// Crate remove - To remove a crate you just need the id.
 export const crateRemove = {
   type: CrateType,
   args: {

@@ -21,3 +21,5 @@ const query = new GraphQLObjectType({
 })
 
 export default query
+
+// This file is the mutations that compile to make the schema - R functionality

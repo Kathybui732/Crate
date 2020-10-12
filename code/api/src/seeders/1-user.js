@@ -1,3 +1,6 @@
+// seed file used to populate the db with some data - in this case we have a fake user and admin
+// there's an up and down - up to build up the database and down to tear it down when it's done - the up seeds the db table with user instances for example here and the down just deletes all those users after
+
 'use strict';
 
 const bcrypt = require('bcrypt');
@@ -7,6 +10,7 @@ const params = require('../config/params.json');
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [
+       // bulkInsert - to insert a bunch of things at once? - We're inserting all the items in one go
       {
         name: 'The Admin',
         email: 'admin@crate.com',

@@ -46,7 +46,7 @@ export async function update(parentValue, { id, name, description }, { auth }) {
   }
 }
 
-// Delete crate
+// Delete crate - delete a crate with the id specified if authorization is made, else throw error
 export async function remove(parentValue, { id }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     return await models.Crate.destroy({where: {id}})

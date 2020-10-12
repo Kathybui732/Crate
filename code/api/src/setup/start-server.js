@@ -13,3 +13,5 @@ export default function (server) {
     }
   })
 }
+
+// This is used to boot up the server, when running npm start

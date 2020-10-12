@@ -12,3 +12,5 @@ const schema = new GraphQLSchema({
 })
 
 export default schema
+
+// the schema consists of queries and mutations

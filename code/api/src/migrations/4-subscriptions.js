@@ -10,6 +10,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         references: {
+          // this is similar to the rails references - this allows you to make the relationship between subscription and user because a crate will belong to a user, so it needs the user id foreign key
           model: 'users',
           key: 'id'
         },
@@ -18,6 +19,7 @@ module.exports = {
       crateId: {
         type: Sequelize.INTEGER,
         references: {
+          // this allows you to make the relationship between subscription and crate because a crate will belong to a crate, so it needs the user id foreign key
           model: 'crates',
           key: 'id'
         },

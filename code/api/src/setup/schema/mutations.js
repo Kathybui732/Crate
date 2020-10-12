@@ -21,3 +21,5 @@ const mutation = new GraphQLObjectType({
 })
 
 export default mutation
+
+// This file is the mutations that compile to make the schema

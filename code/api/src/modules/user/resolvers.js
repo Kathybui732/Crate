@@ -1,6 +1,11 @@
+// Resolver is a collection of functions that generate response for a GraphQL query. In simple terms, a resolver acts as a GraphQL query handler. Every resolver function in a GraphQL schema accepts four positional arguments as given below −
+//
+// fieldName:(root, args, context, info) => { result }
+
 // Imports
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+// to assign a user a token after logging in to use to authenticate and allow them to access different info
 
 // App Imports
 import serverConfig from '../../config/server'
@@ -21,6 +26,7 @@ export async function create(parentValue, { name, email, password }) {
       email,
       password: passwordHashed
     })
+    // once we've checked for the email uniqueness and encrypted their password, we can create that user
   } else {
     // User exists
     throw new Error(`The email ${ email } is already registered. Please try to login.`)
@@ -31,7 +37,7 @@ export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 
   if (!user) {
-    // User does not exists
+    // User does not exists - email not in the server
     throw new Error(`We do not have any user registered with ${ email } email address. Please signup.`)
   } else {
     const userDetails = user.get()
@@ -40,7 +46,7 @@ export async function login(parentValue, { email, password }) {
     const passwordMatch = await bcrypt.compare(password, userDetails.password)
 
     if (!passwordMatch) {
-      // Incorrect password
+      // Incorrect password - if they don't match
       throw new Error(`Sorry, the password you entered is incorrect. Please try again.`)
     } else {
       const userDetailsToken = {

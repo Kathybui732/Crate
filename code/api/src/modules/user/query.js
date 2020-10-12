@@ -9,6 +9,7 @@ import { getAll, getById, login, getGenders } from './resolvers'
 export const users = {
   type: new GraphQLList(UserType),
   resolve: getAll
+  // This is the resolver method
 }
 
 // By ID
@@ -20,7 +21,7 @@ export const user = {
   resolve: getById
 }
 
-// Auth
+// Auth - how to log in user just need name and password
 export const userLogin = {
   type: UserLoginType,
   args: {
@@ -42,7 +43,7 @@ export const userLogin = {
   resolve: login
 }
 
-// Genders
+// Genders - gets gender
 export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders
