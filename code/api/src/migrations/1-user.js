@@ -1,3 +1,5 @@
+// This file defines migration for creating users- essentially a set of instructions for how the database is built. Anywhere with allowNull: false indicates that a value must be provided.
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {

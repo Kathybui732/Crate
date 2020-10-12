@@ -1,3 +1,5 @@
+// This isthe migration for creating the table of Products.
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('products', {

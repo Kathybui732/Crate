@@ -1,3 +1,5 @@
+// This file is a migration for creating the subscriptions table. The references objects here allow you to make relationships between subscriptions and users or crates.
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('subscriptions', {
