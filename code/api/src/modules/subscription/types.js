@@ -20,3 +20,5 @@ const SubscriptionType = new GraphQLObjectType({
 })
 
 export default SubscriptionType
+
+// We may need to add a new type for delivery date- if so, we'll add it here.

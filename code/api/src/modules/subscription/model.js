@@ -18,3 +18,5 @@ module.exports = function(sequelize, DataTypes) {
 
   return Subscription
 }
+
+// Subscriptions connects users & crates (joins table)
