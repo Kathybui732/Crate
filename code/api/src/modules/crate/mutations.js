@@ -5,7 +5,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 import CrateType from './types'
 import { create, remove, update } from './resolvers'
 
-// Crate create
+// Crate create: a mutation allowing us to create crates
 export const crateCreate = {
   type: CrateType,
   args: {
@@ -22,7 +22,7 @@ export const crateCreate = {
   resolve: create
 }
 
-// Crate update
+// Crate update: a mutation allowing us to update an existing crate
 export const crateUpdate = {
   type: CrateType,
   args: {
@@ -44,7 +44,7 @@ export const crateUpdate = {
   resolve: update
 }
 
-// Crate remove
+// Crate remove: a mutation to remove an existing crate
 export const crateRemove = {
   type: CrateType,
   args: {

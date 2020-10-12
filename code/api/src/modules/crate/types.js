@@ -16,3 +16,5 @@ const CrateType = new GraphQLObjectType({
 })
 
 export default CrateType
+
+// This defines what a crate object is, as a CrateType. We may need to make a ProductType so acrate can know about its products.
