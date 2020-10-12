@@ -38,3 +38,5 @@ export const userRemove = {
   },
   resolve: remove
 }
+
+// In order for the user to update their information, we'l also need to create some mutations for userUpdateShippingAddress, userUpdatePicture, userUpdatePersonalDescription, and userUpdateEmail. We'll need to make sure we have CRUD methods for these.

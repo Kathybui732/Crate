@@ -23,3 +23,5 @@ module.exports = function(sequelize, DataTypes) {
 
   return User
 }
+
+// This file is where we'll add more columns to the users table to store their profile data. We would add a picture, address, and personal description column.
