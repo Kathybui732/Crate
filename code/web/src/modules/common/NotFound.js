@@ -1,6 +1,8 @@
 // Imports
+// This helps render the 404
 import React from 'react'
 import { Helmet } from 'react-helmet'
+// Helmet: manage and dynamically set what's in the document's head section
 import { Link } from 'react-router-dom'
 
 // UI Imports

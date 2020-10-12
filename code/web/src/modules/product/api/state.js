@@ -1,3 +1,5 @@
+// This file contains reducers for the product components - as products are displayed for the user, they are kept/ordered and we may need to retrieve specfic items or lists
+
 // Imports
 
 // App Imports
@@ -137,4 +139,3 @@ export const productsRelated = (state = productsRelatedInitialState, action) => 
       return state
   }
 }
-

@@ -22,7 +22,7 @@ if (token && token !== 'undefined' && token !== '') {
   }
 }
 
-// Client App
+// Client App: This allows our app component and its child components to have access to the store
 const Client = () => (
   <Provider store={store} key="provider">
     <Router>
@@ -36,6 +36,12 @@ const Client = () => (
 // Mount client app
 window.onload = () => {
   hydrate(
+    // hydrate is used here because of SSR - so that rather than rendering out test suite, we might be able to use this hydrate
+    // hydrate has to do with the warning messages in the console
+    // example: 'Expected server HTML to contain a matching <div> in <main>.'
+    // It is pulling data server-side before senfing it to the client, we can fix the errors coming up here with this line:
+    // const renderMethod = module.hot ? ReactDOM.hydrate : ReactDOM.render
+    //change hydrate to renderMethod to fix warning 
     <Client/>,
     document.getElementById('app')
   )

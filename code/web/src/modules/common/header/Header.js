@@ -18,6 +18,8 @@ import Logo from './Logo'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
 
+// Holds all nav buttons with their relevant paths 
+
 // Component
 const Header = (props) => {
   return (

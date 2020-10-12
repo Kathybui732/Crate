@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 // Component
 class ScrollToTop extends PureComponent {
-
+// Puts user back at the top of the page
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0)

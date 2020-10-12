@@ -13,6 +13,7 @@ import { renderIf } from '../../setup/helpers'
 import { messageHide } from './api/actions'
 import Header from './header/Header'
 
+// PureComponent is used for shouldComponentUpdate for a shallow compare of props and the stat that happens when change occurs. 
 class Layout extends PureComponent {
 
   render() {

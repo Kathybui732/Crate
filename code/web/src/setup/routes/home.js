@@ -6,6 +6,7 @@ import HowItWorks from '../../modules/pages/HowItWorks'
 import WhatsNew from '../../modules/pages/WhatsNew'
 
 // Home routes
+// all the nav button routes on the left side of the nav bar
 export default {
   home: {
     path: '/',

@@ -1,3 +1,17 @@
+// Profile.js is the component rendered at rootPath/user/profile.
+
+// This is where the user views their profile info like their name and email, log outs, as well as sees their subscriptions
+
+// We will be updating to this component to displau the user's picture, profile info and order history
+
+// We'll need to add state to the Profile to allow some components to function as a controlled form.
+
+// We'll import most of the input types from ui/inputs that is the file for the image, text for email/name/address, input type = "date" for days available.
+
+// We need to create an onChange even and an onSubmit event. This will update the user in both the database, set the new user & trigger a page re-render.
+
+// Or we can build a new component (ProfileForm) that has all the functionality needed. This is more SRP
+
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'

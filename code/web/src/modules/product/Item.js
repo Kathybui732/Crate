@@ -1,3 +1,5 @@
+// creates item components, based on a product passed in as a prop. It renders a card based on a name, slug, description, and image.
+
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'

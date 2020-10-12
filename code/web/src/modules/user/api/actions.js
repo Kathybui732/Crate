@@ -1,3 +1,9 @@
+// This file has all of the User specific actions
+
+// For our track, we may need to write a new action for updating the user's details
+
+// We'll have connect the BE to the FE to get the appropriate routeAPI to make a post request with new user details
+
 // Imports
 import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'
@@ -12,7 +18,7 @@ export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
-// Actions
+// Actions: These functions are action creators - which return action objects. Each action object has a 'type' property, which tell our reducers which part of store to interact with. These actions have to be dispatched to be sent to our reducer.
 
 // Set a user after login or using localStorage token
 export function setUser(token, user) {

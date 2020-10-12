@@ -1,3 +1,6 @@
+// These are the actions that relate to products that the user can view.
+// Using redux with axios, network requests are given routeApi to retrieve lists of products, single products, and related products.
+
 // Imports
 import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'

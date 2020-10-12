@@ -1,5 +1,8 @@
+// Where the ORM sorcery happens. This sets up our database 
+
 // Imports
 import { Sequelize } from 'sequelize'
+// sequilize is the ORM - it maps out the data we have in our database into objects we can use
 
 // App Imports
 import { NODE_ENV } from '../config/env'
