@@ -1,4 +1,4 @@
-// Helpers
+// Helpers - This file has reusable code that we could possibly use. The slug method below could be something we use to display the items on our profile page
 
 // Render element or component by provided condition
 export function renderIf(condition, renderFn) {
