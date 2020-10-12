@@ -28,3 +28,5 @@ connection
   })
 
 export default connection
+
+// This file configures the database

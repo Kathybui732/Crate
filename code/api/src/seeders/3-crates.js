@@ -46,3 +46,5 @@ module.exports = {
     return queryInterface.bulkDelete('crates', null, {});
   }
 }
+
+// If we need to connect crate to products (a crate has many products) we'll update it here.

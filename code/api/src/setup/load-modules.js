@@ -31,3 +31,5 @@ export default function (server) {
     server.use(morgan('tiny'))
   }
 }
+
+// This loads modules for use in different parts of the app

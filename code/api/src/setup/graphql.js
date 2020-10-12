@@ -25,3 +25,5 @@ export default function (server) {
     }
   })))
 }
+
+// Sets up how GraphQL interfaces with the database

@@ -21,3 +21,5 @@ models.sequelize = databaseConnection
 models.Sequelize = Sequelize
 
 export default models
+
+//This file sets up the models
