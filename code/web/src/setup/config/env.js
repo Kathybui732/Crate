@@ -13,3 +13,5 @@ export const NODE_ENV = process.env.NODE_ENV
 
 // Port
 export const PORT = process.env.PORT || 3000
+
+// This file creates an environment with dontenv, assigns vars app url and app api url to the urls created in node JS, assigns var node environments to those that were rcreated in node JS, then assigns var port to port created in node JS.

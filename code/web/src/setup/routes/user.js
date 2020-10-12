@@ -28,3 +28,5 @@ export default {
     auth: true
   }
 }
+
+// This file includes all routes and components that a user would use/experience when logging in

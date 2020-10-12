@@ -3,6 +3,8 @@ import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'
 import cookie from 'js-cookie'
 
+// Axios is a promise-based http client from browser and node.js. gql-query-builder is a way to generate graphql queries using JSON. js-cookie handles cookies (user info).
+
 // App Imports
 import { routeApi } from '../../../setup/routes'
 
@@ -12,7 +14,7 @@ export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
-// Actions
+// Actions - the below are action creators which return action objects. Each has a type property, which tell our reducers which part of store to interact with.
 
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
@@ -23,9 +25,10 @@ export function setUser(token, user) {
   }
 
   return { type: SET_USER, user }
+  // This returns type and payload for action object to tell global store.
 }
 
-// Login a user using credentials
+// Login a user using credentials - this sends a login request to the store. If any login input fields are incorrect, it sends an error, otherwise it sets the token and user vars to the responses from server, and pass that into setUser to get type and payload for dispatch to store. Then it sets the user to use local storage and sets cookies based on which user it is.
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
     dispatch({
@@ -76,7 +79,7 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
   cookie.set('auth', { token, user }, { path: '/' })
 }
 
-// Register a user
+// Register a user - posts a new user info to the server, returns a response and sets the user info to store.
 export function register(userDetails) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -87,7 +90,7 @@ export function register(userDetails) {
   }
 }
 
-// Log out user and remove token from localStorage
+// Log out user and remove token from localStorage - it tells store to logout the user.
 export function logout() {
   return dispatch => {
     logoutUnsetUserLocalStorageAndCookie()
@@ -98,7 +101,7 @@ export function logout() {
   }
 }
 
-// Unset user token and info in localStorage and cookie
+// Unset user token and info in localStorage and cookie. Clears cookies and local storage.
 export function logoutUnsetUserLocalStorageAndCookie() {
   // Remove token
   window.localStorage.removeItem('token')
@@ -108,7 +111,7 @@ export function logoutUnsetUserLocalStorageAndCookie() {
   cookie.remove('auth')
 }
 
-// Get user gender
+// Get user gender - post the user's name and ID to location user's gender in server, return gender and set in store.
 export function getGenders() {
   return dispatch => {
     return axios.post(routeApi, query({

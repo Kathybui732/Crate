@@ -14,3 +14,5 @@ export const routeApi = APP_URL_API
 
 // Image
 export const routeImage = APP_URL_API
+
+// this file exports routes & routeAPI

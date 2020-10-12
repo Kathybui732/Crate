@@ -47,6 +47,8 @@ class Login extends Component {
     })
   }
 
+  // After the user clicks the submit/login button, prevent page from refreshing. If there is an error or multiple errors regarding input (incorrect info), display flash error message, otherwise show loading message.
+
   onSubmit = (event) => {
     event.preventDefault()
 
@@ -72,6 +74,8 @@ class Login extends Component {
         }, 5000)
       })
   }
+
+  // The below renders the login page, shows Helmet data, shows grid of stock images on left, shows grid of the login form on the right.
 
   render() {
     const { isLoading, error } = this.props.user

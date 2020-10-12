@@ -52,7 +52,7 @@ Profile.propTypes = {
   logout: PropTypes.func.isRequired
 }
 
-// Component State
+// Component State - this is providing the component with the user object from store. This info will automatically be linked to our component and can be rendered.
 function profileState(state) {
   return {
     user: state.user
@@ -60,3 +60,6 @@ function profileState(state) {
 }
 
 export default connect(profileState, { logout })(Profile)
+
+// This file tracks features, has a form to upload a photo and set to state + send to server, input field for personal description, edits the email address/shipping address.
+// It's where the user views their profile info, logs out and sees their subscriptions. Because of the track, we'll need to add more to this file to show the user's picture, description, etc.

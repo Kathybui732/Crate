@@ -39,6 +39,8 @@ class Signup extends Component {
     }
   }
 
+  // When the user modifies input fields, it updates state based on which input field is added.
+
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value

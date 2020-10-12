@@ -25,6 +25,8 @@ export default function (app) {
     applyMiddleware(thunk)
   )
 
+  // The above loads the global store
+
   // Match any Route
   app.get('*', (request, response) => {
 
@@ -32,13 +34,19 @@ export default function (app) {
     if (request.cookies.auth) {
       const auth = JSON.parse(request.cookies.auth)
 
+      // The above parses out cookies that remembers a user, which speeds up/eases the UX
+
       if (auth && auth.token !== '' && auth.user) {
         store.dispatch(setUser(auth.token, auth.user))
       }
     }
 
-    // HTTP status code
+    // If the user is authenticated, set the user in the global store
+
+    // HTTP status code - this checks if the user is logged in
     let status = 200
+
+    // If the successful load, get all the routes and match each route to its exact path
 
     const matches = Object.values(routes).reduce((matches, route) => {
       const match = matchPath(request.url, typeof route.path === 'function' ? route.path() : route.path, route)
@@ -61,7 +69,9 @@ export default function (app) {
       status = 404
     }
 
-    // Any AJAX calls inside components
+    // This displays an error if the route is wrong. If components have server calls, fetch the promise.
+
+    // Any AJAX calls inside components - it completes/resolves server calls and renders the page + data. Once the data is resolved, the initial state in store is set. The provider wraps around the app component so all children can have access to global state.
     const promises = matches.map((match) => {
       return match.promise
     })
@@ -88,9 +98,13 @@ export default function (app) {
 
           const styles = flushToHTML()
 
+          // The above loads styles for server-side rendering.
+
           const html = view(APP_URL, NODE_ENV, helmet, appHtml, styles, initialState)
 
-          // Reset the state on server
+          // The above creates the html using the view, which is like index.html.
+
+          // Reset the state on server - helmet deals with title + icon + meta header.
           store.dispatch({
             type: 'RESET'
           })
