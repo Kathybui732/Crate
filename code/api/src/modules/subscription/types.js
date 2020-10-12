@@ -1,3 +1,5 @@
+// defines sub type. would imagine there would multiple types in real app
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 

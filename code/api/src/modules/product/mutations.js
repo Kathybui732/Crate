@@ -1,3 +1,5 @@
+// how to update remove and create products. can product still be mutated if missing a prop?
+
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 

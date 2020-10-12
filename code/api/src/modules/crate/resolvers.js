@@ -1,3 +1,5 @@
+// this is the functionality for resolving successful or unsuccessful crate fetchs
+
 // App Imports
 import models from '../../setup/models'
 import params from '../../config/params'

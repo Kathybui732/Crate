@@ -1,3 +1,5 @@
+// this sets up all models
+
 // Imports
 import Sequelize from 'sequelize'
 

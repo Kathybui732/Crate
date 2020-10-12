@@ -1,3 +1,9 @@
+// seeds DB w crates
+// // I think that if we wind up needing to change a 
+// Crate (we were thinking that a Crate should somehow be connected to products, 
+// as in a Crate has many products), that this would have to be updated in here.
+
+
 'use strict';
 
 module.exports = {

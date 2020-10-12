@@ -1,3 +1,5 @@
+// sets up mutations for data in server 
+
 // Imports
 import { GraphQLObjectType } from 'graphql'
 

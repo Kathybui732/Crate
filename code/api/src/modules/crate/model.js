@@ -1,3 +1,5 @@
+// defines what a crate is and that it will hhave a name a desc
+// curious if this should modified to haveMany products?
 'use strict'
 
 module.exports = function(sequelize, DataTypes) {

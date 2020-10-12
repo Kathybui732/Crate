@@ -1,3 +1,5 @@
+// responses to fetch calls succs and unsuccs
+
 // App Imports
 import params from '../../config/params'
 import models from '../../setup/models'

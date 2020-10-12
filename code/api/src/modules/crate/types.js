@@ -1,3 +1,5 @@
+// is there where we would add func'y for adding an array of products to a crate?
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 

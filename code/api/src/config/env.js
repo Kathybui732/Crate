@@ -1,3 +1,6 @@
+// storing enviro vars 
+
+
 // Imports
 import dotenv from 'dotenv'
 

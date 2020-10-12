@@ -1,3 +1,4 @@
+// authenticates user
 // Imports
 import jwt from 'jsonwebtoken'
 import serverConfig from '../config/server.json'

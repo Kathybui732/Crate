@@ -1,3 +1,6 @@
+// connects server to host, postgres? postico?
+// i see these commands in the terminal when i run npm run setup for the server
+
 // Imports
 import { Sequelize } from 'sequelize'
 

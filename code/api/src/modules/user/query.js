@@ -1,3 +1,5 @@
+// get all users, by id, by login or by gender
+
 // Imports
 import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 

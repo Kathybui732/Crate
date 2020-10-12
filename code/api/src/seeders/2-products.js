@@ -1,3 +1,5 @@
+// seeds database with products
+
 'use strict';
 
 const params = require('../config/params');

@@ -1,3 +1,5 @@
+// get all crates or get crates by crate id
+
 // Imports
 import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 

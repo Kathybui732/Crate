@@ -1,3 +1,14 @@
+// seeds database w users
+// from Dan: 
+// I looked up what saltRounds is, 
+// and it's a function of bcrypt that essentially adds layers of 
+// complexity to something with each round of saltRounds.
+//  A higher saltRounds value ensures more complex and secure hashes. 
+// However, very high salt rounds results in a bad user experience as it 
+// takes that much more time to secure the password. In our case, the number of salt 
+// rounds is defined in the server.json file, and it's 10.
+
+
 'use strict';
 
 const bcrypt = require('bcrypt');

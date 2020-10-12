@@ -1,3 +1,5 @@
+// getting the type of product, and the products based on gender
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 

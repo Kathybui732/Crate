@@ -1,3 +1,4 @@
+// get products by various queries / keys 
 // Imports
 import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 

@@ -1,3 +1,5 @@
+// sets up queries for data in server
+
 // Imports
 import { GraphQLObjectType } from 'graphql'
 

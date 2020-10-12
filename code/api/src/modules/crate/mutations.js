@@ -1,3 +1,5 @@
+// how you would create, update, and delete a crate
+
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 

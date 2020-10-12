@@ -1,3 +1,5 @@
+// getting subs by user or by all or id
+
 // Imports
 import { GraphQLInt, GraphQLList } from 'graphql'
 

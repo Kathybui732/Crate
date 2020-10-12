@@ -1,3 +1,5 @@
+// imports the queries and mutations for the database schema / map
+
 // Imports
 import { GraphQLSchema } from 'graphql'
 

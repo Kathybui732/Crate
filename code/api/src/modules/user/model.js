@@ -1,3 +1,5 @@
+// curious if this where the user would have default vals for when user is registered /created?
+
 'use strict'
 
 // User

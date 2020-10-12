@@ -1,3 +1,5 @@
+// assigns crate to subcription and user
+
 'use strict'
 
 // Subscription

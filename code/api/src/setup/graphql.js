@@ -1,3 +1,6 @@
+// sets up interaction between graphql interacts w database. 
+// i see these logs in console when i run npm run start for server
+
 // Imports
 import graphqlHTTP from 'express-graphql'
 

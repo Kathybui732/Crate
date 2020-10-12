@@ -1,3 +1,6 @@
+// mutating users' information
+// place for updates on our track
+
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 

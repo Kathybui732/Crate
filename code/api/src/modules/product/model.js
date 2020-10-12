@@ -1,3 +1,6 @@
+// each product will have a name desc slug type gender and image
+// somewhere, if the product has a certain type and gender, put it in certain crate
+
 'use strict'
 
 // Product

@@ -1,3 +1,5 @@
+// declares user type-- admin or non, or by gender
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
