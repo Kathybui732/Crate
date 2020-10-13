@@ -10,6 +10,24 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      description: {
+        type: Sequelize.TEXT
+      },
+      streetAddress1: {
+        type: Sequelize.STRING
+      },
+      streetAddress2: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      state: {
+        type: Sequelize.STRING
+      },
+      zip: {
+        type: Sequelize.STRING
+      },
       email: {
         type: Sequelize.TEXT
       },
