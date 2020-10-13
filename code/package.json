@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)",
   "scripts": {
+    "test": "jest",
     "setup": "npm run setup:local && npm run setup:all",
     "setup:local": "npm install",
     "setup:all": "concurrently 'npm run setup:web' 'npm run setup:api' 'npm run setup:mobile' --names 'web,api,mobile'",
@@ -26,5 +27,5 @@
   "dependencies": {},
   "devDependencies": {
     "concurrently": "^4.1.0"
-  }
+  },
 }
