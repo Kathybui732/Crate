@@ -120,15 +120,16 @@ export function getGenders() {
 
 // Updating the user info 
 export function updateUser(user) {
-  console.log('user', user)
+  // console.log(axios.defaults.headers.common['Authorization'] = `Bearer ${token}`)
+  // console.log('user', user)
   return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
       variables: {
-        image: user.image,
-        id: user.id
+        id: 1,
+        image: user.image
       },
-      fields: ['image', 'id']
+      fields: ['id', 'image']
     }))
       .then(response => {
         console.log(response)
