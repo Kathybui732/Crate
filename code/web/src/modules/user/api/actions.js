@@ -117,3 +117,27 @@ export function getGenders() {
     }))
   }
 }
+
+// Updating the user info 
+export function updateUser(user) {
+  console.log('user', user)
+  return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'userUpdate',
+      variables: {
+        image: user.image,
+        id: user.id
+      },
+      fields: ['image', 'id']
+    }))
+      .then(response => {
+        console.log(response)
+        if(response.status === 200) {
+          dispatch({
+            type: SET_USER,
+            user
+          })
+        }
+      })
+  }
+}
