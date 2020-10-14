@@ -28,18 +28,12 @@ export async function create(parentValue, { name, email, password }) {
 }
 
 // Update user
-export async function update(parentValue, { id, description, streetAddress1, streetAddress2, city, state, zip, email }, { auth }) {
+export async function update(parentValue, { id, email }, { auth }) {
   const user = await models.User.findOne({ where: { id } })
 
-  if(auth.user && auth.user.id > 0) {
-    return await models.User.update(
+  if(user) {
+    return await user.update(
       {
-        description,
-        streetAddress1,
-        streetAddress2,
-        city,
-        state,
-        zip,
         email
       },
       { where: { id } }
