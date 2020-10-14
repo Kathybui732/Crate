@@ -4,3 +4,4 @@ public/images/uploads/*
 !public/images/uploads/.gitkeep
 coverage
 extras
+.DS_Store
