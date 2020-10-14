@@ -51,31 +51,67 @@ describe('user update', () => {
     );
   });
 
-  test('returns updated user information in the response', async () => {
-    const response = await request(server)
-    .post('/')
-    .send({
-      query:' { userLogin(email: "user@crate.com", password: "123456", role: "user") { token } } '
-    });
-    let token = response.body.data.userLogin.token;
-    // console.log(token);
+  afterAll((done) => {
+    server.close()
+    done()
+  });
 
-    const response2 = await request(server)
-    .post('/')
-    .set("bearer",token)
-    .send({
-      query:' mutation userUpdate($email: String!) { userUpdate(email:$email, id:2) {email} } ',
-      variables: {
-        "email":"newuser@crate.com"
-      }
-    });
-    console.log(response2.body);
+  it('can change a logged in users email', async () => {
+    const tokenResponse = await request(server)
+      .get('/')
+      .send({query: `{ userLogin(email: "user@crate.com", password: "123456", role: "user") { token user { id name email } } }`})
+    const token = tokenResponse.body.data.userLogin.token
+
+    const response = await request(server)
+      .post('/')
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .send(JSON.stringify({
+        query: `mutation userUpdate($email: String!) {
+          userUpdate(email: $email, id: 1) {
+            ...userFields
+          }
+        }
+        fragment userFields on user {
+          email
+        }`,
+        variables: {
+          input: {
+            email: 'new@email.com'
+          }
+        }
+      })
+    )
+    console.log(response.body)
+  });
+});
+
+
+  // test('returns updated user information in the response', async () => {
+  //   const response = await request(server)
+  //   .post('/')
+  //   .send({
+  //     query:' { userLogin(email: "user@crate.com", password: "123456", role: "user") { token } } '
+  //   });
+  //   let token = response.body.data.userLogin.token;
+  //   // console.log(token);
+  //
+  //   const response2 = await request(server)
+  //   .post('/')
+  //   .set("bearer",token)
+  //   .send({
+  //     query:' mutation userUpdate($email: String!) { userUpdate(email:$email, id:2) {email} } ',
+  //     variables: {
+  //       "email":"newuser@crate.com"
+  //     }
+  //   });
+  //   console.log(response2.body);
 
     // .expect(200)
     // expect(update.type).toBe(UserType);
 
-  });
-});
+  // });
 
 // Note: BE has unproductively struggled on this for a while, not knowing how to write a test but feeling like we can write the code.
 
