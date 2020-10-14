@@ -6,15 +6,21 @@
   "scripts": {
     "setup": "npm run setup:install && npm run setup:db",
     "setup:install": "npm install",
-    "setup:db": "npm run db:migrate && npm run db:seed",
-    "db:reset": "./node_modules/.bin/sequelize db:reset",
+    "setup:db": "npm run db:create && npm run db:migrate && npm run db:seed",
+    "db:reset": "./node_modules/.bin/sequelize db:seed:undo:all",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "db:drop": "./node_modules/.bin/sequelize db:drop",
+    "db:create": "./node_modules/.bin/sequelize db:create",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "start": "nodemon src/index.js --exec babel-node",
     "start:prod": "npm run build:prod && npm run start:server",
     "build:prod": "babel src -s -D -d build",
     "start:server": "node build/index.js",
-    "test": "jest --watch --runInBand --detectOpenHandles"
+    "testEnv": "jest --watch --runInBand --detectOpenHandles",
+    "test:start": "NODE_ENV=test npm run setup:db",
+    "test:end": "NODE_ENV=test npm run db:drop",
+    "test": "npm run test:start && npm run testEnv && npm run test:end"
+
   },
   "keywords": [],
   "author": "",
@@ -25,7 +31,9 @@
     "@babel/node": "7.8.7",
     "@babel/plugin-transform-runtime": "7.9.0",
     "@babel/preset-env": "7.9.5",
+    "chai": "^4.2.0",
     "jest": "^26.5.3",
+    "mocha": "^8.1.3",
     "nodemon": "2.0.3",
     "supertest": "^5.0.0"
   },
