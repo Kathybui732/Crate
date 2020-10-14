@@ -25,7 +25,7 @@ class ProfilePicture extends Component {
       email: this.props.user.details.email,
     })
   }
-
+  
   onUpload = (e) => {
     this.props.messageShow('Uploading file, please wait...')
 
@@ -38,7 +38,7 @@ class ProfilePicture extends Component {
           this.props.messageShow('File uploaded successfully.')
           
           this.setState({
-            imgURL: `${response.data.file}`
+            imgURL: `/images/uploads/${response.data.file}`
           })
           console.log(this.state)
         } else {
@@ -47,16 +47,16 @@ class ProfilePicture extends Component {
       })
       .catch(error => {
         this.props.messageShow('There was some error. Please try again.')
-
       })
       .then(() => {
         window.setTimeout(() => {
           this.props.messageHide()
         }, 5000)
       })
-      updateUser(this.state)
+      // this.props.updateUser(this.state)
+      .then(() => this.props.updateUser(this.state))
       .then(response => console.log(response))
-  }
+    }
 
   render() {
     return (
@@ -69,7 +69,7 @@ class ProfilePicture extends Component {
             </>
           ))}
           {renderIf(this.state.imgURL !== '', () => (
-            <img src={ `${routeImage}/images/uploads/${this.state.imgURL}` } alt="Profile upload" style={{ width: 100 }}/>
+            <img src={ `${routeImage}${this.state.imgURL}` } alt="Profile upload" style={{ width: 100 }}/>
           ))}
         </div>
       </div>
