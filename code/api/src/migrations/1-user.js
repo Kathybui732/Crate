@@ -28,6 +28,9 @@ module.exports = {
       zip: {
         type: Sequelize.STRING
       },
+      image: {
+        type: Sequelize.TEXT
+      },
       email: {
         type: Sequelize.TEXT
       },
