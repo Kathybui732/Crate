@@ -83,6 +83,11 @@ export const userUpdate = {
       type: GraphQLString
     },
 
+    image: {
+      name: 'image',
+      type: GraphQLString
+    },
+
     email: {
       name: 'email',
       type: GraphQLString
