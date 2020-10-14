@@ -28,7 +28,7 @@ export async function create(parentValue, { name, email, password }) {
 }
 
 // Update user
-export async function update(parentValue, { id, description, streetAddress1, streetAddress2, city, state, zip, email }, { auth }) {
+export async function update(parentValue, { id, description, streetAddress1, streetAddress2, city, state, zip, image, email }, { auth }) {
   if(auth.user && auth.user.id > 0) {
     return await models.User.update(
       {
@@ -38,6 +38,7 @@ export async function update(parentValue, { id, description, streetAddress1, str
         city,
         state,
         zip,
+        image,
         email
       },
       { where: { id } }
