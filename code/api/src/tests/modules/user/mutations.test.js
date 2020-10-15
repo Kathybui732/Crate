@@ -63,7 +63,6 @@ describe('user queries', () => {
     expect(updateResponse.body.data.userUpdate).toHaveProperty('zip')
     expect(updateResponse.body.data.userUpdate).toHaveProperty('image')
     expect(updateResponse.body.data.userUpdate.email).toEqual('new@crate.com')
-    expect(updateResponse.body.data.userUpdate.email).not.toEqual('user@crate.com')
   })
 
   it('can update a user with just email', async () => {
@@ -79,7 +78,6 @@ describe('user queries', () => {
       .send({ query: `mutation { userUpdate(id: ${userID}, email: "new@crate.com") { id email streetAddress1 streetAddress2 city state zip description image } }` })
       .expect(200)
     expect(updateResponse.body.data.userUpdate.email).toEqual('new@crate.com')
-    expect(updateResponse.body.data.userUpdate.email).not.toEqual('user@crate.com')
   })
 
   it('can update a user with just address', async () => {
@@ -117,7 +115,6 @@ describe('user queries', () => {
       .send({ query: `mutation { userUpdate(id: ${userID}, description: "The only user") { id email streetAddress1 streetAddress2 city state zip description image } }` })
       .expect(200)
     expect(updateResponse.body.data.userUpdate.description).toEqual('The only user')
-    expect(updateResponse.body.data.userUpdate.description).not.toEqual(null)
   })
 
   it('can update a user with image', async () => {
@@ -133,6 +130,21 @@ describe('user queries', () => {
       .send({ query: `mutation { userUpdate(id: ${userID}, image: "image.jpg") { id email streetAddress1 streetAddress2 city state zip description image } }` })
       .expect(200)
     expect(updateResponse.body.data.userUpdate.image).toEqual('image.jpg')
-    expect(updateResponse.body.data.userUpdate.image).not.toEqual(null)
+  })
+
+  it('can update a user delivery date', async () => {
+    const tokenResponse = await request(server)
+      .get('/')
+      .send({query: '{ userLogin(email: "user@crate.com", password: "123456", role: "user") { token user { id } } }'})
+    const userID = tokenResponse.body.data.userLogin.user.id
+
+    const updateResponse = await request(server)
+      .post('/')
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .send({ query: `mutation { userUpdate(id: ${userID}, deliveryDate: "15th" ) { id email streetAddress1 streetAddress2 city state zip description image deliveryDate } }` })
+      .expect(200)
+    console.log(updateResponse.body.data)
+    expect(updateResponse.body.data.userUpdate.deliveryDate).toEqual('15th')
   })
 });
