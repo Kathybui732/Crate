@@ -21,7 +21,6 @@ export function setUser(token, user) {
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }
-
   return { type: SET_USER, user }
 }
 
@@ -36,7 +35,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['user {name, email, role, image, id}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -119,26 +118,23 @@ export function getGenders() {
 }
 
 // Updating the user info 
-export function updateUser(user) {
-  // console.log(axios.defaults.headers.common['Authorization'] = `Bearer ${token}`)
-  // console.log('user', user)
+export function updateUser(user, id) {
   return dispatch => {
-    return axios.post(routeApi, mutation({
-      operation: 'userUpdate',
-      variables: {
-        id: 1,
-        image: user.image
-      },
-      fields: ['id', 'image']
-    }))
-      .then(response => {
-        console.log(response)
-        if(response.status === 200) {
-          dispatch({
-            type: SET_USER,
-            user
-          })
+    dispatch({
+      type: UPDATE_IMAGE,
+      user
+    })
+    return axios.post(routeApi, {
+      query: `
+      mutation userUpdate($image: String!) {
+        userUpdate(id: ${id}, image: $image) {
+          image
         }
-      })
+      }
+    `,
+    variables: {
+      image: user.imgURL,
+    },
+    })
   }
 }
