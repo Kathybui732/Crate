@@ -41,6 +41,7 @@ class ProfilePicture extends Component {
             imgURL: `/images/uploads/${response.data.file}`
           })
           console.log(this.state)
+          this.saveChanges()
         } else {
           this.props.messageShow('Please try again.')
         }
@@ -53,24 +54,26 @@ class ProfilePicture extends Component {
           this.props.messageHide()
         }, 5000)
       })
-      // this.props.updateUser(this.state)
-      .then(() => this.props.updateUser(this.state))
-      .then(response => console.log(response))
+    }
+
+    saveChanges = () => {
+      this.props.updateUser(this.state, this.props.user.details.id)
     }
 
   render() {
+    console.log(`${routeImage}${this.state.imgURL}`)
     return (
       <div>
         <div style={{ padding: '1em' }}>
-          {renderIf(this.state.imgURL === '', () => (
+          {renderIf(!this.props.user.details.image, () => (
             <>
               <img src={ `${ APP_URL }/images/profile.png` } alt="Profile placeholder" style={{ width: 100 }}/>
-              <File text="Add Profile Picture" onChange={(e) => this.onUpload(e)}/>
             </>
           ))}
-          {renderIf(this.state.imgURL !== '', () => (
-            <img src={ `${routeImage}${this.state.imgURL}` } alt="Profile upload" style={{ width: 100 }}/>
+          {renderIf(this.props.user.details.image, () => (
+            <img src={ `${routeImage}${this.props.user.details.image}` } alt="Profile upload" style={{ width: 100 }}/>
           ))}
+          <File text="Add Profile Picture" onChange={(e) => this.onUpload(e)}/>
         </div>
       </div>
     )
