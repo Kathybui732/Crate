@@ -36,7 +36,11 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
+<<<<<<< HEAD
       fields: ['user {name, email, role, image, id}', 'token']
+=======
+      fields: ['user {name, email, role, id}', 'token']
+>>>>>>> Add order history
     }))
       .then(response => {
         let error = ''
@@ -137,6 +141,14 @@ export function updateUser(user, id) {
       image: user.imgURL,
     },
     })
+    
+// Get user
+export function getUser() {
+  return dispatch => {
+    return axios.post(routeApi, query({
+      operation: 'user',
+      fields: ['id', 'name', 'email', 'image', 'role', /* add rest of user fields here*/]
+    }))
   }
 }  
 // Get single user
