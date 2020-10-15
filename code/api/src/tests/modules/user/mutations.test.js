@@ -144,7 +144,6 @@ describe('user queries', () => {
       .set('Accept', 'application/json')
       .send({ query: `mutation { userUpdate(id: ${userID}, deliveryDate: "15th" ) { id email streetAddress1 streetAddress2 city state zip description image deliveryDate } }` })
       .expect(200)
-    console.log(updateResponse.body.data)
     expect(updateResponse.body.data.userUpdate.deliveryDate).toEqual('15th')
   })
 });
