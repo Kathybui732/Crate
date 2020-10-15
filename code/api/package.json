@@ -11,6 +11,7 @@
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "db:drop": "./node_modules/.bin/sequelize db:drop",
     "db:create": "./node_modules/.bin/sequelize db:create",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate && npm run db:seed",
     "start": "nodemon src/index.js --exec babel-node",
     "start:prod": "npm run build:prod && npm run start:server",
     "build:prod": "babel src -s -D -d build",
@@ -19,7 +20,8 @@
     "test:create": "NODE_ENV=test npm run db:create",
     "test:reset": "NODE_ENV=test npm run db:reset",
     "test:drop": "NODE_ENV=test npm run db:drop",
-    "test:setup": "NODE_ENV=test npm run db:create && NODE_ENV=test npm run db:migrate"
+    "test:setup": "NODE_ENV=test npm run db:create && NODE_ENV=test npm run db:migrate",
+    "test:reset": "NODE_ENV=test npm run db:drop && NODE_ENV=test npm run db:create && NODE_ENV=test npm run db:migrate"
   },
   "keywords": [],
   "author": "",

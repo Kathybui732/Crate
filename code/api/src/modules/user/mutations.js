@@ -101,7 +101,7 @@ export const userUpdate = {
     role: {
       name: 'role',
       type: GraphQLString
-    },
+    }
   },
   resolve: update
 }
