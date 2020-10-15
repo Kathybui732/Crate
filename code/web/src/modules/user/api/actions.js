@@ -11,6 +11,7 @@ export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
+export const UPDATE_USER = 'AUTH/UPDATE_USER'
 
 // Actions
 
@@ -120,10 +121,10 @@ export function getGenders() {
 // Updating the user info 
 export function updateUser(user, id) {
   return dispatch => {
-    dispatch({
-      type: UPDATE_IMAGE,
-      user
-    })
+    // dispatch({
+    //   type: UPDATE_IMAGE,
+    //   user
+    // })
     return axios.post(routeApi, {
       query: `
       mutation userUpdate($image: String!) {
@@ -135,6 +136,27 @@ export function updateUser(user, id) {
     variables: {
       image: user.imgURL,
     },
+    })
+  }
+}  
+// Get single user
+export function getUser(id) {
+  return dispatch => {
+    axios.post(routeApi, query({
+      operation: 'user',
+      variables: { id },
+      fields: ['name', 'email', 'role', 'image', 'id']
+    }))
+    .then(response => {
+      const user = response.data.data.user
+  
+      dispatch({
+        type: UPDATE_USER,
+        user
+      })
+    })
+    .catch(error => {
+      console.log(error)
     })
   }
 }
