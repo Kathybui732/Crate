@@ -16,10 +16,11 @@
     "start:prod": "npm run build:prod && npm run start:server",
     "build:prod": "babel src -s -D -d build",
     "start:server": "node build/index.js",
-    "testEnv": "jest --watch --runInBand --detectOpenHandles",
-    "test:start": "NODE_ENV=test npm run setup:db",
-    "test:end": "NODE_ENV=test npm run db:drop",
-    "test": "npm run test:start && npm run testEnv && npm run test:end"
+    "test": "jest --watch --runInBand --detectOpenHandles",
+    "test:create": "NODE_ENV=test npm run db:create",
+    "test:reset": "NODE_ENV=test npm run db:reset",
+    "test:drop": "NODE_ENV=test npm run db:drop",
+    "test:setup": "NODE_ENV=test npm run db:create && NODE_ENV=test npm run db:migrate"
 
   },
   "keywords": [],

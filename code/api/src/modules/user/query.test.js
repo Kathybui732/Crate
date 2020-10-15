@@ -2,6 +2,10 @@ import express from 'express'
 import graphqlHTTP from 'express-graphql'
 import schema from '../../setup/schema/index'
 import request from 'supertest'
+import db from '../../setup/database'
+import models from "../../setup/models"
+const bcrypt = require('bcrypt');
+const config = require('../../config/server.json');
 
 const User = require('./model');
 
@@ -9,16 +13,35 @@ describe('user queries', () => {
   let server;
 
   beforeAll(() => {
-    server = express();
+      server = express();
 
-    server.use(
-      '/',
-      graphqlHTTP({
-        schema: schema,
-        graphql: false
-      })
-    )
-  })
+      server.use(
+          '/',
+          graphqlHTTP({
+              schema: schema,
+              graphiql: false
+          })
+      )
+  });
+
+  // beforeEach(async () => {
+  //   const user1 = {
+  //       name: "User",
+  //       email: "user@crate.com",
+  //       password: "123456",
+  //       role: "user"
+  //   }
+  //
+  //   await models.User.create(user1);
+  // });
+  //
+  // afterEach(async () => {
+  //     await models.User.destroy({ where: {} });
+  // });
+
+  afterAll(() => {
+      db.close();
+  });
 
   // afterAll((done) => {
   //   server.close()
@@ -83,6 +106,14 @@ describe('user queries', () => {
   // })
 
   it('can create a user', async () => {
+    const user1 = {
+        name: "User",
+        email: "user@crate.com",
+        password: bcrypt.hashSync('123456', config.saltRounds),
+        role: "user"
+    }
+
+    models.User.create(user1)
     // const signup = `mutation userSignup($name: String!, $email: String!, $password: String) {
     //   userSignup(name: $name, email: $email, password: $password){
     //     ...userFields
@@ -110,10 +141,10 @@ describe('user queries', () => {
 
     const tokenResponse = await request(server)
       .get('/')
-      .send({query: '{ userLogin(email: "admin@crate.com", password: "123456", role: "admin") { token user { id name email } } }'})
+      .send({query: '{ userLogin(email: "user@crate.com", password: "123456", role: "user") { token user { id name email } } }'})
 
-    const token = tokenResponse.body.data.userLogin.token
-
+    // const token = tokenResponse.body.data.userLogin.token
+    console.log(tokenResponse.body)
     const userID = tokenResponse.body.data.userLogin.user.id
 
     // const query = `mutation userUpdate($streetAddress1: String!) {
@@ -130,11 +161,11 @@ describe('user queries', () => {
 
     const updateResponse = await request(server)
       .post('/')
-      .set('Authorization', `Bearer ${token}`)
+      // .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       // .send({query: query, variables_2})
-      .send({ query: `mutation { userUpdate(id: ${userID}, email: "YoungAndHip@aol.com") { id email  } }` })
+      .send({ query: `mutation { userUpdate(id: ${userID}, email: "YoungAndHip@aol.com", streetAddress1: "123 New Lane", city: "Denver", state: "CO", zip: "80207" ) { id email } }` })
       .expect(200)
     console.log(updateResponse.body)
   })
