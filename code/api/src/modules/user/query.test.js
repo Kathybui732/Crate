@@ -2,7 +2,7 @@ import express from 'express'
 import graphqlHTTP from 'express-graphql'
 import schema from '../../setup/schema/index'
 import request from 'supertest'
-import db from '../../setup/database'
+// import db from '../../setup/database'
 import models from "../../setup/models"
 const bcrypt = require('bcrypt');
 const config = require('../../config/server.json');
@@ -24,23 +24,23 @@ describe('user queries', () => {
       )
   });
 
-  // beforeEach(async () => {
-  //   const user1 = {
-  //       name: "User",
-  //       email: "user@crate.com",
-  //       password: "123456",
-  //       role: "user"
-  //   }
+  beforeEach(async () => {
+    const user1 = {
+        name: "User",
+        email: "user@crate.com",
+        password: bcrypt.hashSync('123456', config.saltRounds),
+        role: "user"
+    }
+
+    await models.User.create(user1)
+  });
   //
-  //   await models.User.create(user1);
-  // });
-  //
-  // afterEach(async () => {
-  //     await models.User.destroy({ where: {} });
-  // });
+  afterEach(async () => {
+    await models.User.destroy({ where: {} });
+  });
 
   afterAll(() => {
-      db.close();
+      server.close();
   });
 
   // afterAll((done) => {
@@ -106,14 +106,14 @@ describe('user queries', () => {
   // })
 
   it('can create a user', async () => {
-    const user1 = {
-        name: "User",
-        email: "user@crate.com",
-        password: bcrypt.hashSync('123456', config.saltRounds),
-        role: "user"
-    }
-
-    models.User.create(user1)
+    // const user1 = {
+    //     name: "User",
+    //     email: "user@crate.com",
+    //     password: bcrypt.hashSync('123456', config.saltRounds),
+    //     role: "user"
+    // }
+    //
+    // models.User.create(user1)
     // const signup = `mutation userSignup($name: String!, $email: String!, $password: String) {
     //   userSignup(name: $name, email: $email, password: $password){
     //     ...userFields
