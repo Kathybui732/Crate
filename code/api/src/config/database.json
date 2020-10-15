@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "carlyc",
     "password": null,
     "database": "crate",
     "host": "127.0.0.1",
@@ -8,9 +8,17 @@
     "seederStorage": "sequelize"
   },
   "production": {
-    "username": "postgres",
+    "username": "carlyc",
     "password": null,
     "database": "crate",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "seederStorage": "sequelize"
+  },
+  "test": {
+    "username": "postgres",
+    "password": null,
+    "database": "crate_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "seederStorage": "sequelize"
