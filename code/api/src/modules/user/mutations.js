@@ -102,6 +102,11 @@ export const userUpdate = {
       name: 'role',
       type: GraphQLString
     },
+
+    deliveryDate: {
+      name: 'deliveryDate',
+      type: GraphQLString
+    }
   },
   resolve: update
 }
