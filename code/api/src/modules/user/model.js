@@ -13,7 +13,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     },
     role: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      defaultValue: 'USER'
     },
     image: {
       type: DataTypes.TEXT
@@ -36,6 +37,10 @@ module.exports = function(sequelize, DataTypes) {
     description: {
       type: DataTypes.STRING
     },
+    deliveryDate: {
+      type: DataTypes.STRING,
+      defaultValue: '1st'
+    }
   })
 
   User.associate = function(models) {
