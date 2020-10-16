@@ -22,4 +22,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     }
   })
+
+  Product.associate = function(models) {
+    Product.belongsToMany(models.User, {through: 'UserProduct', foreignKey: 'userId', as: 'users'});
+  }
 }
