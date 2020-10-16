@@ -1,3 +1,12 @@
+// track features
+// form to upload photo and set to state + send to server
+// input field for personal description
+// edit email address 
+// add shipping address 
+// ^^ could all be done on 'Edit Profile' page with 'save' button
+// see history of delivered items + history of items kept (buttons, leads to new pages?)
+
+
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -11,13 +20,15 @@ import { Grid, GridCell } from '../../ui/grid'
 import { H3, H4 } from '../../ui/typography'
 import Button from '../../ui/button'
 import { grey, grey2 } from '../../ui/common/colors'
+import File from '../../ui/input/File'
+import Form from '../../ui/Form/Form'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 
-// Component
 const Profile = (props) => (
+
   <div>
     {/* SEO */}
     <Helmet>
@@ -35,8 +46,8 @@ const Profile = (props) => (
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <ProfilePicture />
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
-
-        <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
+        
+        <Form />
 
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
