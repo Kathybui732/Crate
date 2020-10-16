@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   UserProduct.init({
     userId: DataTypes.INTEGER,
-    productId: DataTypes.INTEGER
+    productId: DataTypes.INTEGER,
+    status: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'UserProduct',

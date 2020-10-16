@@ -14,6 +14,7 @@ const UserProductType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     user: { type: UserType },
     product: { type: ProductType },
+    status: { type: GraphQLString },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
   })
