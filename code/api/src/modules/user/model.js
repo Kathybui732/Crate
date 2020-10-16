@@ -44,8 +44,8 @@ module.exports = function(sequelize, DataTypes) {
   })
 
   User.associate = function(models) {
-    User.hasMany(models.Subscription)
+    User.hasMany(models.Subscription);
+    User.belongsToMany(models.Product, {through: 'UserProduct', foreignKey: 'productId', as: 'products'});
   }
-
   return User
 }
