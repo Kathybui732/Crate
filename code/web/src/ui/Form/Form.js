@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {updateUser} from '../../modules/user/api/actions'
+import {updateProfileData} from '../../modules/user/api/actions'
 
 import Input from '../input/Input'
 import Textarea from '../input/Textarea'
@@ -40,15 +40,15 @@ class Form extends Component {
       const updatedDataKey = key.charAt(0).toLowerCase() + key.slice(1)
       if (updatedDataKey === 'shippingAddress') {
           const shippingInfo = [
-            this.state.streetAddress1, 
-            this.state.streetAddress2, 
-            this.state.city, 
-            this.state.state, 
-            this.state.zip
+            {stateKey: 'streetAddress1', value: this.state.streetAddress1}, 
+            {stateKey: 'streetAddress2', value: this.state.streetAddress2}, 
+            {stateKey: 'city', value: this.state.city}, 
+            {stateKey: 'state', value: this.state.state}, 
+            {stateKey: 'zip', value: this.state.zip}
           ] 
-          shippingInfo.forEach(key => this.props.updateUser(this.state, this.props.user.details.id) )
+          shippingInfo.forEach(element => this.props.updateProfileData(element.stateKey, element.value, this.props.user.details.id) )
       }
-      this.props.updateUser(this.state, this.props.user.details.id)
+      this.props.updateProfileData(updatedDataKey, this.state[updatedDataKey], this.props.user.details.id)
   }
 
   toggleFormInputs = (event, key) => {
@@ -170,7 +170,6 @@ class Form extends Component {
 
 Form.propTypes = {
   user: PropTypes.object.isRequired,
-  // updateUser: PropTypes.func.isRequired
 }
 
 
@@ -181,5 +180,5 @@ function formState(state) {
   }
 }
 
-export default connect(formState, updateUser)(Form)
+export default connect(formState, {updateProfileData})(Form)
 
