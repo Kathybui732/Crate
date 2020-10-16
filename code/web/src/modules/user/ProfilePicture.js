@@ -40,7 +40,6 @@ class ProfilePicture extends Component {
           this.setState({
             imgURL: `/images/uploads/${response.data.file}`
           })
-          console.log(this.state)
           this.saveChanges()
         } else {
           this.props.messageShow('Please try again.')
@@ -62,7 +61,6 @@ class ProfilePicture extends Component {
     }
 
   render() {
-    console.log(`${routeImage}${this.state.imgURL}`)
     return (
       <div>
         <div style={{ padding: '1em' }}>

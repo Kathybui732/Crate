@@ -21,6 +21,7 @@ const Textarea = (props) => {
           padding-top: 0.8em;
           padding-bottom: 0.4em;
           font-size: 1em;
+          font-family: 'Roboto', sans-serif;
           border: none;
           background-color: transparent;
           border-bottom: 1px solid ${ grey2 };

@@ -109,6 +109,7 @@ export function logoutUnsetUserLocalStorageAndCookie() {
   cookie.remove('auth')
 }
 
+
 // Get user gender
 export function getGenders() {
   return dispatch => {
@@ -119,19 +120,21 @@ export function getGenders() {
   }
 }
 
-// Updating the user info 
+// Updating the user info
 export function updateUser(user, id) {
   return dispatch => {
     return axios.post(routeApi, {
       query: `
-      mutation userUpdate($image: String!) {
-        userUpdate(id: ${id}, image: $image) {
+      mutation userUpdate($image: String!, $email: String!) {
+        userUpdate(id: ${id}, image: $image, email: $email) {
           image
+          email
         }
       }
     `,
     variables: {
       image: user.imgURL,
+      email: user.email
     },
     })
   }
@@ -147,7 +150,7 @@ export function getUser(id) {
     }))
     .then(response => {
       const user = response.data.data.user
-  
+
       dispatch({
         type: UPDATE_USER,
         user
@@ -186,3 +189,52 @@ export function getUserProducts(token) {
     })
   }
 }
+// Updating the user info
+// export function updateUser(user, id) {
+//   return dispatch => {
+//     // dispatch({
+//     //   type: UPDATE_IMAGE,
+//     //   user
+//     // })
+//     return axios.post(routeApi, {
+//       query: `
+//       mutation userUpdate($image: String!,
+//         $description: String!,
+//         $email: String!,
+//         $deliveryDate: String!,
+//         $zip: String!,
+//         $city: String!,
+//         $state: String!,
+//         $streetAddress1: String!,
+//         $streetAddress2: String!,
+//         ) {
+//         userUpdate(
+//           id: ${id},
+//           image: $image,
+//           description: $description
+//           email: $email
+//           deliveryDate: $deliveryDate
+//           zip: $zip
+//           city: $city
+//           state: $state
+//           streetAddress1: $streetAddress1
+//           streetAddress2: $streetAddress2
+//           ) {
+//           image
+//           description
+//           email
+//           deliveryDate
+//           zip
+//           city
+//           state
+//           streetAddress1
+//           streetAddress2
+//         }
+//       }
+//     `,
+//     variables: {
+//       image: user.imgURL,
+//     },
+//     })
+//   }
+// }
