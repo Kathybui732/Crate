@@ -6,7 +6,7 @@ import { upload, messageShow, messageHide } from '../common/api/actions'
 import { renderIf } from '../../setup/helpers'
 import { routeImage } from '../../setup/routes'
 import { APP_URL, APP_URL_API } from '../../setup/config/env'
-import { updateUser } from './api/actions'
+import { updateUser, getUser } from './api/actions'
 
 class ProfilePicture extends Component {
   constructor() {
@@ -58,6 +58,7 @@ class ProfilePicture extends Component {
 
     saveChanges = () => {
       this.props.updateUser(this.state, this.props.user.details.id)
+      this.props.getUser(this.props.user.details.id)
     }
 
   render() {
@@ -85,4 +86,4 @@ function profileState(state) {
     user: state.user,
   }
 }
-export default connect(profileState, { upload, messageShow, messageHide, updateUser })(ProfilePicture)
+export default connect(profileState, { upload, messageShow, messageHide, updateUser, getUser })(ProfilePicture)
