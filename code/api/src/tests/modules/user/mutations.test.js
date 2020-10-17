@@ -49,6 +49,7 @@ describe('user mutations', () => {
 
     const updateResponse = await request(server)
       .post('/')
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({ query: `mutation { userUpdate(id: ${userID}, email: "new@crate.com", streetAddress1: "123 New Lane", city: "Denver", state: "CO", zip: "80207", image: "image.jpg", description: "The only user") { id email streetAddress1 streetAddress2 city state zip description image } }` })
@@ -73,6 +74,7 @@ describe('user mutations', () => {
 
     const updateResponse = await request(server)
       .post('/')
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({ query: `mutation { userUpdate(id: ${userID}, email: "new@crate.com") { id email streetAddress1 streetAddress2 city state zip description image } }` })
@@ -88,6 +90,7 @@ describe('user mutations', () => {
 
     const updateResponse = await request(server)
       .post('/')
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({ query: `mutation { userUpdate(id: ${userID}, streetAddress1: "123 New Lane", city: "Denver", state: "CO", zip: "80207") { id email streetAddress1 streetAddress2 city state zip description image } }` })
@@ -110,6 +113,7 @@ describe('user mutations', () => {
 
     const updateResponse = await request(server)
       .post('/')
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({ query: `mutation { userUpdate(id: ${userID}, description: "The only user") { id email streetAddress1 streetAddress2 city state zip description image } }` })
@@ -125,6 +129,7 @@ describe('user mutations', () => {
 
     const updateResponse = await request(server)
       .post('/')
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({ query: `mutation { userUpdate(id: ${userID}, image: "image.jpg") { id email streetAddress1 streetAddress2 city state zip description image } }` })
@@ -140,6 +145,7 @@ describe('user mutations', () => {
 
     const updateResponse = await request(server)
       .post('/')
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({ query: `mutation { userUpdate(id: ${userID}, deliveryDate: "15th" ) { id email streetAddress1 streetAddress2 city state zip description image deliveryDate } }` })
