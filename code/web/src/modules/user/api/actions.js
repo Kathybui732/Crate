@@ -49,7 +49,7 @@ export function login(userCredentials, isLoading = true) {
           const user = response.data.data.userLogin.user
 
           dispatch(setUser(token, user))
-          dispatch(getUserProducts(token))
+
           loginSetUserLocalStorageAndCookie(token, user)
         }
 
@@ -122,10 +122,6 @@ export function getGenders() {
 // Updating the user info 
 export function updateUser(user, id) {
   return dispatch => {
-    // dispatch({
-    //   type: UPDATE_IMAGE,
-    //   user
-    // })
     return axios.post(routeApi, {
       query: `
       mutation userUpdate($image: String!) {
