@@ -109,6 +109,7 @@ export function logoutUnsetUserLocalStorageAndCookie() {
   cookie.remove('auth')
 }
 
+
 // Get user gender
 export function getGenders() {
   return dispatch => {
@@ -119,14 +120,15 @@ export function getGenders() {
   }
 }
 
-// Updating the user info 
+// Updating the user image
 export function updateUser(user, id) {
   return dispatch => {
     return axios.post(routeApi, {
       query: `
-      mutation userUpdate($image: String!) {
+      mutation userUpdate($image: String! ) {
         userUpdate(id: ${id}, image: $image) {
           image
+          email
         }
       }
     `,
@@ -136,6 +138,23 @@ export function updateUser(user, id) {
     })
   }
 }
+
+// update profile info
+export function updateProfileData(updatedUser) {
+  return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'userUpdate',
+      variables: updatedUser,
+      fields: ['id', 'email', 'streetAddress1', 'streetAddress2', 'city', 'state', 'zip', 'description', 'image']
+    })).then(response => {
+      dispatch({
+        type: UPDATE_USER,
+        ...user, updatedUser
+      })
+    })
+  }
+}
+
 
 // Get single user
 export function getUser(id) {
@@ -147,7 +166,7 @@ export function getUser(id) {
     }))
     .then(response => {
       const user = response.data.data.user
-  
+
       dispatch({
         type: UPDATE_USER,
         user
