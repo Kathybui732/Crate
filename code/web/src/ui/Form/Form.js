@@ -19,7 +19,7 @@ class Form extends Component {
     this.state = {
       editEmail: false,
       editDescription: false,
-      editDeliveryDate: false, 
+      editDeliveryDate: false,
       editShippingAddress: false,
       email: props.user.details.email || '',
       description: this.description === '' ? props.user.details.description : 'Tell us about yourself!',
@@ -35,20 +35,22 @@ class Form extends Component {
   handleChange = (e) => {
       this.setState({[e.target.name] : e.target.value})
   }
-  
+
   updateUserData = (key) => {
       const updatedDataKey = key.charAt(0).toLowerCase() + key.slice(1)
       if (updatedDataKey === 'shippingAddress') {
           const shippingInfo = [
-            {stateKey: 'streetAddress1', value: this.state.streetAddress1}, 
-            {stateKey: 'streetAddress2', value: this.state.streetAddress2}, 
-            {stateKey: 'city', value: this.state.city}, 
-            {stateKey: 'state', value: this.state.state}, 
+            {stateKey: 'streetAddress1', value: this.state.streetAddress1},
+            {stateKey: 'streetAddress2', value: this.state.streetAddress2},
+            {stateKey: 'city', value: this.state.city},
+            {stateKey: 'state', value: this.state.state},
             {stateKey: 'zip', value: this.state.zip}
-          ] 
-          shippingInfo.forEach(element => this.props.updateProfileData(element.stateKey, element.value, this.props.user.details.id) )
+          ]
+          shippingInfo.forEach((element) => {
+            this.props.updateProfileData( { [element.stateKey]: element.value, id: this.props.user.details.id } )
+          })
       }
-      this.props.updateProfileData(updatedDataKey, this.state[updatedDataKey], this.props.user.details.id)
+      this.props.updateProfileData({[updatedDataKey]: this.state[updatedDataKey], id: this.props.user.details.id})
   }
 
   toggleFormInputs = (event, key) => {
@@ -71,18 +73,18 @@ class Form extends Component {
         <Grid>
             <GridCell style={{ textAlign: 'center', marginBottom: '.5em'}}>
             {this.state.editEmail === true ? (
-              <Input 
-                type='text' 
-                placeholder='Edit email address' 
-                name='email' onChange={this.handleChange} 
+              <Input
+                type='text'
+                placeholder='Edit email address'
+                name='email' onChange={this.handleChange}
                 style={{marginRight: '.5em', width: '12em', marginBottom: '.5em'}}/>
               ) : (
                 <p style={{ color: grey2, marginBottom: '0em', display: 'inline', marginRight: '.5em' }}>{this.state.email}</p>
                 )
               }
-              <Button 
+              <Button
                 theme={this.state.editEmail === true ? 'secondary' : 'primary'}
-                style={{fontSize: '.5em'}} 
+                style={{fontSize: '.5em'}}
                 onClick={(event) => this.toggleFormInputs(event, "Email")}>
                   {this.state.editEmail === true ? 'Save' : 'Edit'}
                 </Button>
@@ -92,27 +94,27 @@ class Form extends Component {
           <Grid style={{marginBottom: '.5em'}}>
             <GridCell style={{ textAlign: 'center'}} >
               {this.state.editDeliveryDate === true ? (
-                  <Select type='text' 
-                    placeholder='1st' 
-                    name='deliveryDate' 
-                    onChange={this.handleChange} 
+                  <Select type='text'
+                    placeholder='1st'
+                    name='deliveryDate'
+                    onChange={this.handleChange}
                     style={{ marginBottom: '.5em'}}>
                     <option>1st</option>
                     <option>15th</option>
                   </Select>
               ) : (
                 <p style={{ color: grey2, marginBottom: '0', marginRight: '.5em', display: 'inline' }}>Delivery Date: {this.state.deliveryDate} of the month</p>
-              ) 
+              )
               }
-              <Button 
+              <Button
                 theme={this.state.editDeliveryDate === true ? 'secondary' : 'primary'}
-                style={{fontSize: '.5em', display: 'inline'}} 
-                onClick={(event) => this.toggleFormInputs(event, "DeliveryDate")}> 
+                style={{fontSize: '.5em', display: 'inline'}}
+                onClick={(event) => this.toggleFormInputs(event, "DeliveryDate")}>
                 {this.state.editDeliveryDate ? 'Save' : 'Edit'}
               </Button>
             </GridCell>
           </Grid>
-       
+
           <Grid style={{marginBottom: '.5em'}}>
             <GridCell style={{textAlign: 'center'}}>
             {this.state.editShippingAddress === true ? (
@@ -125,39 +127,39 @@ class Form extends Component {
               </div>
             ) : (
               <p style={{ color: grey2, marginBottom: '0', marginRight: '.5em', display: 'inline' }}>
-                {this.state.streetAddress1 === null ? 'Please add ' : this.state.streetAddress1 + " "} 
-                {this.state.streetAddress2 === null ? 'enter ' : this.state.streetAddress2 + " "} 
-                {this.state.city === null ? 'your ' : this.state.city + " "} 
-                {this.state.state ===  null ? 'shipping ' : this.state.state + " "} 
+                {this.state.streetAddress1 === null ? 'Please add ' : this.state.streetAddress1 + " "}
+                {this.state.streetAddress2 === null ? 'enter ' : this.state.streetAddress2 + " "}
+                {this.state.city === null ? 'your ' : this.state.city + " "}
+                {this.state.state ===  null ? 'shipping ' : this.state.state + " "}
                 {this.state.zip === null ? 'address' : this.state.zip + " "}
               </p>
-              ) 
+              )
             }
-            <Button 
-              theme={this.state.editShippingAddress ? 'secondary' : 'primary'} 
-              style={{fontSize: '.5em', display: 'inline'}} 
+            <Button
+              theme={this.state.editShippingAddress ? 'secondary' : 'primary'}
+              style={{fontSize: '.5em', display: 'inline'}}
               onClick={(event) => this.toggleFormInputs(event, "ShippingAddress")}>
                 {this.state.editShippingAddress === true ? 'Save' : 'Edit'}
               </Button>
             </GridCell>
           </Grid>
-        
+
          <Grid style={{marginBottom: '.5em'}}>
           <GridCell>
             {this.state.editDescription ? (
-              <Textarea 
-                type='text' 
-                placeholder='Edit description' 
-                max='100' name='description' 
-                onChange={this.handleChange} 
+              <Textarea
+                type='text'
+                placeholder='Edit description'
+                max='100' name='description'
+                onChange={this.handleChange}
                 style={{marginRight: '.5em'}}/>
             ) : (
               <p style={{ color: grey2, marginBottom: '0', display: 'inline', marginRight: '.5em' }}>{this.state.description}</p>
             )
           }
-              <Button 
+              <Button
                 theme={this.state.editDescription ? 'secondary' : 'primary'}
-                style={{fontSize: '.5em'}} 
+                style={{fontSize: '.5em'}}
                 onClick={(event) => this.toggleFormInputs(event, "Description")}>
                   {this.state.editDescription ? 'Save' : 'Edit'}
                 </Button>
@@ -174,11 +176,10 @@ Form.propTypes = {
 
 
 function formState(state) {
-  // state.user 
+  // state.user
   return {
     user: state.user
   }
 }
 
 export default connect(formState, {updateProfileData})(Form)
-

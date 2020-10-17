@@ -140,17 +140,20 @@ export function updateUser(user, id) {
 }
 
 // update profile info
-export function updateProfileData(key, updatedData, id) {
+export function updateProfileData(updatedUser) {
   return dispatch => {
-    return axios.post(routeApi, {
-      query : `mutation userUpdate($${key}: String!) { userUpdate(id: ${id}, ${key}: $${key}) { id email streetAddress1 streetAddress2 city state zip description image } }`,
-      variables: {
-        key: updatedData
-      }
+    return axios.post(routeApi, mutation({
+      operation: 'userUpdate',
+      variables: updatedUser,
+      fields: ['id', 'email', 'streetAddress1', 'streetAddress2', 'city', 'state', 'zip', 'description', 'image']
+    })).then(response => {
+      dispatch({
+        type: UPDATE_USER,
+        ...user, updatedUser
+      })
     })
   }
 }
-
 
 
 // Get single user
@@ -202,52 +205,3 @@ export function getUserProducts(token) {
     })
   }
 }
-// Updating the user info
-// export function updateUser(user, id) {
-//   return dispatch => {
-//     // dispatch({
-//     //   type: UPDATE_IMAGE,
-//     //   user
-//     // })
-//     return axios.post(routeApi, {
-//       query: `
-//       mutation userUpdate($image: String!,
-//         $description: String!,
-//         $email: String!,
-//         $deliveryDate: String!,
-//         $zip: String!,
-//         $city: String!,
-//         $state: String!,
-//         $streetAddress1: String!,
-//         $streetAddress2: String!,
-//         ) {
-//         userUpdate(
-//           id: ${id},
-//           image: $image,
-//           description: $description
-//           email: $email
-//           deliveryDate: $deliveryDate
-//           zip: $zip
-//           city: $city
-//           state: $state
-//           streetAddress1: $streetAddress1
-//           streetAddress2: $streetAddress2
-//           ) {
-//           image
-//           description
-//           email
-//           deliveryDate
-//           zip
-//           city
-//           state
-//           streetAddress1
-//           streetAddress2
-//         }
-//       }
-//     `,
-//     variables: {
-//       image: user.imgURL,
-//     },
-//     })
-//   }
-// }
