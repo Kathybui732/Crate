@@ -1,13 +1,14 @@
 // App Imports
 import { isEmpty } from '../../../setup/helpers'
-import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT, UPDATE_USER } from './actions'
+import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT, UPDATE_USER, GET_USER_PRODUCTS } from './actions'
 
 // Initial State
 export const userInitialState = {
   error: null,
   isLoading: false,
   isAuthenticated: false,
-  details: null
+  details: null,
+  userProducts: [],
 }
 
 // State
@@ -47,6 +48,12 @@ export default (state = userInitialState, action) => {
       return{
         ...state,
         details: action.user
+      }
+
+    case GET_USER_PRODUCTS:
+      return {
+        ...state,
+        userProducts: action.userProducts
       }
 
     default:

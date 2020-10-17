@@ -12,6 +12,7 @@ export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 export const UPDATE_USER = 'AUTH/UPDATE_USER'
+export const GET_USER_PRODUCTS = 'AUTH/GET_USER_PRODUCTS'
 
 // Actions
 
@@ -121,10 +122,6 @@ export function getGenders() {
 // Updating the user info 
 export function updateUser(user, id) {
   return dispatch => {
-    // dispatch({
-    //   type: UPDATE_IMAGE,
-    //   user
-    // })
     return axios.post(routeApi, {
       query: `
       mutation userUpdate($image: String!) {
@@ -138,7 +135,8 @@ export function updateUser(user, id) {
     },
     })
   }
-}  
+}
+
 // Get single user
 export function getUser(id) {
   return dispatch => {
@@ -153,6 +151,34 @@ export function getUser(id) {
       dispatch({
         type: UPDATE_USER,
         user
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+}
+
+// get user's products
+export function getUserProducts(token) {
+  return dispatch => {
+    return axios.post(routeApi, query(
+      {
+        operation: 'productsByUser',
+        fields: ['product {id, name, image, description}']
+      }),
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    )
+    .then(response => {
+      const userProducts = response.data.data.productsByUser
+
+      return dispatch({
+        type: GET_USER_PRODUCTS,
+        userProducts
       })
     })
     .catch(error => {
