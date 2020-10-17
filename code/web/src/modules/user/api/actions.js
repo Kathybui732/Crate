@@ -120,6 +120,10 @@ export function getGenders() {
   }
 }
 
+<<<<<<< HEAD
+=======
+// Updating the user image
+>>>>>>> e6abf5de87c4e9c3dbf35a67e20ca0dabd686289
 export function updateUser(user, id) {
   return dispatch => {
     return axios.post(routeApi, {
@@ -136,7 +140,11 @@ export function updateUser(user, id) {
     },
     })
   }
+<<<<<<< HEAD
 }
+=======
+}  
+>>>>>>> e6abf5de87c4e9c3dbf35a67e20ca0dabd686289
 
 // update profile info
 export function updateProfileData(key, updatedData, id) {
@@ -148,7 +156,11 @@ export function updateProfileData(key, updatedData, id) {
       }
     })
   }
+<<<<<<< HEAD
 }
+=======
+}  
+>>>>>>> e6abf5de87c4e9c3dbf35a67e20ca0dabd686289
 
 
 

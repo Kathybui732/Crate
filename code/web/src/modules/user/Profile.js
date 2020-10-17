@@ -56,6 +56,8 @@ class Profile extends PureComponent {
             <ProfilePicture />
             <H4 style={{ marginBottom: '0.5em' }}>{this.props.user.details.name}</H4>
 
+            <Form />
+
             <p style={{ color: grey2, marginBottom: '2em' }}>{this.props.user.details.email}</p>
 
             <Link to={userRoutes.subscriptions.path}>
