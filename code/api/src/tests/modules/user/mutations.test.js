@@ -2,12 +2,12 @@ import express from 'express'
 import graphqlHTTP from 'express-graphql'
 import schema from '../../../setup/schema/index'
 import request from 'supertest'
-import models from "../../../setup/models"
+import models from '../../../setup/models'
 const bcrypt = require('bcrypt');
 const config = require('../../../config/server.json');
 const User = require('../../../modules/user/model');
 
-describe('user queries', () => {
+describe('user mutations', () => {
   let server;
 
   beforeAll(() => {
