@@ -10,7 +10,7 @@ import { updateUser, getUser } from './api/actions'
 
 class ProfilePicture extends Component {
   constructor() {
-    super() 
+    super()
     this.state = {
       imgURL: '',
       name: '',
@@ -25,7 +25,7 @@ class ProfilePicture extends Component {
       email: this.props.user.details.email,
     })
   }
-  
+
   onUpload = (e) => {
     this.props.messageShow('Uploading file, please wait...')
 
@@ -36,7 +36,7 @@ class ProfilePicture extends Component {
       .then(response => {
         if (response.status === 200) {
           this.props.messageShow('File uploaded successfully.')
-          
+
           this.setState({
             imgURL: `/images/uploads/${response.data.file}`
           })
@@ -56,8 +56,7 @@ class ProfilePicture extends Component {
     }
 
     saveChanges = () => {
-      this.props.updateUser(this.state, this.props.user.details.id)
-      this.props.getUser(this.props.user.details.id)
+      this.props.updateProfileData({image: this.state.imgURL})
     }
 
   render() {

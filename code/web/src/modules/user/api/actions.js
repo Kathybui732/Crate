@@ -120,25 +120,6 @@ export function getGenders() {
   }
 }
 
-// Updating the user image
-export function updateUser(user, id) {
-  return dispatch => {
-    return axios.post(routeApi, {
-      query: `
-      mutation userUpdate($image: String! ) {
-        userUpdate(id: ${id}, image: $image) {
-          image
-          email
-        }
-      }
-    `,
-    variables: {
-      image: user.imgURL,
-    },
-    })
-  }
-}
-
 // update profile info
 export function updateProfileData(updatedUser) {
   return dispatch => {
@@ -162,7 +143,7 @@ export function getUser(id) {
     axios.post(routeApi, query({
       operation: 'user',
       variables: { id },
-      fields: ['name', 'email', 'role', 'image', 'id']
+      fields: ['id', 'email', 'streetAddress1', 'streetAddress2', 'city', 'state', 'zip', 'description', 'image']
     }))
     .then(response => {
       const user = response.data.data.user
