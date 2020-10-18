@@ -37,33 +37,33 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role, image, id}', 'token']
+      fields: ['user {name, email, role, image, id, streetAddress1, streetAddress2, city, state, zip, description, deliveryDate}', 'token']
     }))
-      .then(response => {
-        let error = ''
+    .then(response => {
+      let error = ''
 
-        if (response.data.errors && response.data.errors.length > 0) {
-          error = response.data.errors[0].message
-        } else if (response.data.data.userLogin.token !== '') {
-          const token = response.data.data.userLogin.token
-          const user = response.data.data.userLogin.user
+      if (response.data.errors && response.data.errors.length > 0) {
+        error = response.data.errors[0].message
+      } else if (response.data.data.userLogin.token !== '') {
+        const token = response.data.data.userLogin.token
+        const user = response.data.data.userLogin.user
 
-          dispatch(setUser(token, user))
+        dispatch(setUser(token, user))
 
-          loginSetUserLocalStorageAndCookie(token, user)
-        }
+        loginSetUserLocalStorageAndCookie(token, user)
+      }
 
-        dispatch({
-          type: LOGIN_RESPONSE,
-          error
-        })
+      dispatch({
+        type: LOGIN_RESPONSE,
+        error
       })
-      .catch(error => {
-        dispatch({
-          type: LOGIN_RESPONSE,
-          error: 'Please try again'
-        })
+    })
+    .catch(error => {
+      dispatch({
+        type: LOGIN_RESPONSE,
+        error: 'Please try again'
       })
+    })
   }
 }
 
@@ -120,52 +120,16 @@ export function getGenders() {
   }
 }
 
-// Updating the user image
-export function updateUser(user, id) {
-  return dispatch => {
-    return axios.post(routeApi, {
-      query: `
-      mutation userUpdate($image: String! ) {
-        userUpdate(id: ${id}, image: $image) {
-          image
-          email
-        }
-      }
-    `,
-    variables: {
-      image: user.imgURL,
-    },
-    })
-  }
-}
-
 // update profile info
-export function updateProfileData(updatedUser) {
+export function updateProfileData(params) {
   return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
-      variables: updatedUser,
-      fields: ['id', 'email', 'streetAddress1', 'streetAddress2', 'city', 'state', 'zip', 'description', 'image']
-    })).then(response => {
-      dispatch({
-        type: UPDATE_USER,
-        ...user, updatedUser
-      })
-    })
-  }
-}
-
-
-// Get single user
-export function getUser(id) {
-  return dispatch => {
-    axios.post(routeApi, query({
-      operation: 'user',
-      variables: { id },
-      fields: ['name', 'email', 'role', 'image', 'id']
+      variables: params,
+      fields: ['id', 'name', 'email', 'streetAddress1', 'streetAddress2', 'city', 'state', 'zip', 'description', 'image', 'deliveryDate']
     }))
     .then(response => {
-      const user = response.data.data.user
+      const user = response.data.data.userUpdate
 
       dispatch({
         type: UPDATE_USER,

@@ -22,13 +22,13 @@ class Form extends Component {
       editDeliveryDate: false,
       editShippingAddress: false,
       email: props.user.details.email || '',
-      description: this.description === '' ? props.user.details.description : 'Tell us about yourself!',
+      description: props.user.details.description || 'Tell us about yourself!',
       deliveryDate: props.user.details.deliveryDate || '1st',
-      streetAddress1: this.streetAddress1 === "" ? props.user.details.streetAddress1 : null,
-      streetAddress2: this.streetAddress2 === "" ? props.user.details.streetAddress2 : '',
-      city: this.city === "" ? props.user.details.city : null,
-      state: this.state === ""  ?props.user.details.state : null,
-      zip: this.zip === "" ? props.user.details.zip : null
+      streetAddress1: this.streetAddress1 === "" ? null: props.user.details.streetAddress1,
+      streetAddress2: this.streetAddress2 === "" ? '': props.user.details.streetAddress2,
+      city: this.city === "" ? null: props.user.details.city,
+      state: this.state === "" ? null: props.user.details.state,
+      zip: this.zip === "" ? null: props.user.details.zip
     }
   }
 
@@ -127,7 +127,7 @@ class Form extends Component {
               </div>
             ) : (
               <p style={{ color: grey2, marginBottom: '0', marginRight: '.5em', display: 'inline' }}>
-                {this.state.streetAddress1 === null ? 'Please add ' : this.state.streetAddress1 + " "}
+                {this.state.streetAddress1 === null ? 'Please ' : this.state.streetAddress1 + " "}
                 {this.state.streetAddress2 === null ? 'enter ' : this.state.streetAddress2 + " "}
                 {this.state.city === null ? 'your ' : this.state.city + " "}
                 {this.state.state ===  null ? 'shipping ' : this.state.state + " "}
