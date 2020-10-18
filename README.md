@@ -36,7 +36,7 @@
 
 ## About The Project
 
-This project explores an existing brownfield codebase. We will be using the open source crate project. Crate is a platform, similar to Stitch Fix, that allows users to setup monthly subscriptions to receive trendy clothes and accessories. We will be exploring the codebase in order to add test coverage, fix bugs, and extend the current functionality. We will not focus on mobile development. 
+This project adds additional functionality to a legacy codebase. We will be using the open source Crate project. Crate is a platform, similar to Stitch Fix, that allows users to setup monthly subscriptions to receive trendy clothes and accessories. We will be exploring the codebase in order to add test coverage, fix bugs, and extend the current functionality. We will not focus on mobile development. 
 
 Our learning goals were to: 
 
