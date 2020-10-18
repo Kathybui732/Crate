@@ -43,7 +43,7 @@ export default (state = userInitialState, action) => {
         isAuthenticated: false,
         details: null
       }
-    
+
     case UPDATE_USER:
       return{
         ...state,

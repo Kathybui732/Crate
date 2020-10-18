@@ -6,26 +6,24 @@ import { upload, messageShow, messageHide } from '../common/api/actions'
 import { renderIf } from '../../setup/helpers'
 import { routeImage } from '../../setup/routes'
 import { APP_URL, APP_URL_API } from '../../setup/config/env'
-import { updateUser, getUser } from './api/actions'
+import { updateProfileData } from './api/actions'
 
 class ProfilePicture extends Component {
   constructor() {
-    super() 
+    super()
     this.state = {
-      imgURL: '',
-      name: '',
-      email: '',
+      id: '',
+      image: '',
     }
   }
 
   componentDidMount() {
     this.setState({
-      imgURL: this.props.user.details.imgURL || '',
-      name: this.props.user.details.name,
-      email: this.props.user.details.email,
+      image: this.props.user.details.image || '',
+      id: this.props.user.details.id
     })
   }
-  
+
   onUpload = (e) => {
     this.props.messageShow('Uploading file, please wait...')
 
@@ -36,11 +34,12 @@ class ProfilePicture extends Component {
       .then(response => {
         if (response.status === 200) {
           this.props.messageShow('File uploaded successfully.')
-          
+
           this.setState({
-            imgURL: `/images/uploads/${response.data.file}`
+            image: `/images/uploads/${response.data.file}`
           })
           this.saveChanges()
+
         } else {
           this.props.messageShow('Please try again.')
         }
@@ -56,8 +55,7 @@ class ProfilePicture extends Component {
     }
 
     saveChanges = () => {
-      this.props.updateUser(this.state, this.props.user.details.id)
-      this.props.getUser(this.props.user.details.id)
+      this.props.updateProfileData(this.state)
     }
 
   render() {
@@ -84,4 +82,4 @@ function profileState(state) {
     user: state.user,
   }
 }
-export default connect(profileState, { upload, messageShow, messageHide, updateUser, getUser })(ProfilePicture)
+export default connect(profileState, { upload, messageShow, messageHide, updateProfileData })(ProfilePicture)
